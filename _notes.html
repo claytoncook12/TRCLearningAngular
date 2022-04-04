@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .content {
+        background-color: #e9e9e9;
+        min-width: 700px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        padding: 10px 0 10px;
+      }
+
+      #ul-space {
+        padding: 0 0 0 20px;
+      }
+
+      p {
+        padding: 10px;
+      }
+
+      code-block {
+        max-width: 600px;
+        margin: 20px 0 20px 0;
+        padding: 0px;
+      }
+
+      figure img {
+        max-height: 600px;
+        margin: 20px 0 0 0;
+        padding: 0px;
+        border: 1px #000000 solid;
+        overflow-x: scroll;
+      }
+
+      figcaption {
+        max-width: 600px;
+        font-style: italic;
+        padding: 2px;
+        text-align: center;
+        margin: 5px 0 10px 0;
+      }
+
+      .text-blue {
+        color: #b1eaf7;
+        background-color: none;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+          1px 1px 0 #000;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .text-red {
+        color: red;
+        font-weight: bold;
+      }
+
+      .print-button {
+        float: right;
+        margin: 10px;
+        position: sticky;
+        top: 10px;
+      }
+    </style>
+
+    <!-- Javascript imports -->
+    <!-- https://www.npmjs.com/package/@heppokofrontend/html-code-block-element -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/vs.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@heppokofrontend/html-code-block-element/lib/html-code-block-element.common.min.js"
+      defer
+    ></script>
+
+    <!-- FontAwsome -->
+    <script src="https://use.fontawesome.com/4f2944df7b.js"></script>
+
+    <!-- Print content -->
+    <script src="static/js/print.js"></script>
+
+    <!-- Link for sidebar -->
+    <!-- https://www.codingflicks.com/2021/07/sidebar-menu-using-only-html-css.html -->
+    <link rel="stylesheet" href="static\css\sidebar.css" />
+  </head>
+
+  <div class="sidenav">
+    <div class="logo">
+      <img src="static\images\angular_logo.png" alt="" />
+    </div>
+    <ul class="mainNav">
+      <li class="single-nav">
+        <a href="#top">
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="single-nav">
+        <a href="#Section1">
+          <span>Section 1</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <!-- Print Content in id="print-content" -->
+    <button onclick="printDiv('print-content')" class="print-button">
+      <i class="fa fa-print" aria-hidden="true"> Print </i>
+    </button>
+
+    <div id="print-content">
+
+    <h1 id="top">
+      Angular - The Complete Guide (2022 Edition)
+    </h1>
+
+    <h2>
+      by: Maximilian Schwarzmüller<br />
+      Professional Web Developer and Instructor
+    </h2>
+
+
+    <p>
+      Master Angular 13 (formerly "Angular 2") and build awesome, reactive web apps with the successor of Angular.js
+    </p>
+    <hr />
+
+    <h2 id="Section1">Section 1 Gettings Started</h2>
+
+    <h3>Module Content</h3>
+    <ul id="ul-space">
+      <li>Suff</li>
+    </ul>
+
+    <br />
+    <h3 id="2">
+      2. What is Angular?
+    </h3>
+
+    <p>
+      Angular is a JavaScript Framework which allows for creation of
+      Single-Page-Applications (SPAs).
+    </p>
+
+    <p>
+      One html fill that downloads all the javascript files needed for the website. Feels
+      more like a mobile application. This is done by changing the DOM.
+    </p>
+    </div>
+
+    <h3 id="3">
+      3. Angular Versioning
+    </h3>
+    
+    <figure>
+      <img src="static\images\capture_1.PNG" alt="capture_1">
+      <figcaption>Figure. Angular Versioning</figcaption>
+    </figure>
+
+    <h3 id="7">
+      7. Project Setup and First App
+    </h3>
+
+    <code-block language="" label="Project Creation" controls>
+<textarea>ng new my-first-app --no-strict
+ng serve</textarea
+>
+    </code-block>
+    
+    <h3 id="8">
+      8. Editing the First App
+    </h3>
+
+    <figure>
+      <img src="static\images\capture_2.PNG" alt="capture_2">
+      <figcaption>Figure. Edited First Files</figcaption>
+    </figure>
+
+    <h3 id="9">
+      9. The Course Structure
+    </h3>
+    
+    <hr>
+    <h3>Blanks to Use</h3>
+
+    <figure>
+      <img src="static\images\.PNG" alt="capture_#">
+      <figcaption>Figure. </figcaption>
+    </figure>
+
+    <code-block language="" label="blank" controls>
+      <textarea>blank</textarea
+      >
+          </code-block>
+</html>
