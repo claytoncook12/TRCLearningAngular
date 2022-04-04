@@ -67,6 +67,14 @@
         position: sticky;
         top: 10px;
       }
+
+      code {
+        background-color: #272822;
+        color: #f8f8f2;
+        border-radius: 0.3em;
+        padding: 4px 5px 6px;
+        white-space: nowrap;
+      }
     </style>
 
     <!-- Javascript imports -->
@@ -137,7 +145,7 @@
     </p>
     <hr />
 
-    <h2 id="Section1">Section 1 Gettings Started</h2>
+    <h2 id="Section1">Section 1 <br>Gettings Started</h2>
 
     <h3>Module Content</h3>
     <ul id="ul-space">
@@ -237,14 +245,30 @@ ng serve</textarea
 
     <p>
     One important note: All the course code will only work if you are
-    <b>NOT using "strict mode"<b> see the "First App" lecture in this module.
+    <b>NOT using "strict mode"</b> see the "First App" lecture in this module.
     Strict mode forces you to write more verbose code in some places
     (especially when it comes to class properties). If you enabled it by
     accident, you can also disable it by setting <code>strict: false</code> in your <code>tsconfig.json</code> file.
     </p>
 
-    <h2 id="Section2">Section 2 The Basics</h2>
+    <h2 id="Section2">Section 2. <br>The Basics</h2>
 
+    <h3>
+      How an Angular App gets Loaded and Started
+    </h3>
+
+    <p>
+      "index.html" is served by the server. Then the <code>app-root</code> is run to tie together the whole application.
+      The <code>selector</code> inside the app.component.ts then tells where insert the component. Then the import scripts
+      are run that are inserted by the <code>ngserve</code> cli command. 
+    </p>
+
+    <p>
+      main.ts -> app.module.ts -> "bootsrap: [AppComponent]" -> four component files of "css", "html", "spec.ts", and "module.ts"
+    </p>
+
+    <br>
+    <br>
     <hr>
     <h3>Blanks to Use</h3>
 
