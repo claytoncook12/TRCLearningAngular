@@ -27,12 +27,17 @@
         padding: 0px;
       }
 
-      figure img {
-        max-height: 600px;
+      .figure-image-div {
+        max-width: 1200px;
+        max-height: 800px;
+        overflow-x: scroll;
+      }
+
+      .figure-image-div img {
         margin: 20px 0 0 0;
         padding: 0px;
         border: 1px #000000 solid;
-        overflow-x: scroll;
+        max-height: 800px
       }
 
       figcaption {
@@ -155,7 +160,9 @@
     </h3>
     
     <figure>
-      <img src="static\images\capture_1.PNG" alt="capture_1">
+      <div class="figure-image-div">
+        <img src="static\images\capture_1.PNG" alt="capture_1">
+      </div>
       <figcaption>Figure. Angular Versioning</figcaption>
     </figure>
 
@@ -174,7 +181,9 @@ ng serve</textarea
     </h3>
 
     <figure>
-      <img src="static\images\capture_2.PNG" alt="capture_2">
+      <div class="figure-image-div">
+        <img src="static\images\capture_2.PNG" alt="capture_2">
+      </div>
       <figcaption>Figure. Edited First Files</figcaption>
     </figure>
 
