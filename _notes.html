@@ -5,6 +5,7 @@
       .content {
         background-color: #e9e9e9;
         min-width: 700px;
+        max-width: 900px;
       }
 
       h1,
@@ -73,7 +74,6 @@
         color: #f8f8f2;
         border-radius: 0.3em;
         padding: 4px 5px 6px;
-        white-space: nowrap;
       }
     </style>
 
@@ -166,7 +166,7 @@
       One html fill that downloads all the javascript files needed for the website. Feels
       more like a mobile application. This is done by changing the DOM.
     </p>
-    </div>
+    
 
     <h3 id="3">
       3. Angular Versioning
@@ -185,8 +185,7 @@
 
     <code-block language="" label="Project Creation" controls>
 <textarea>ng new my-first-app --no-strict
-ng serve</textarea
->
+ng serve</textarea>
     </code-block>
     
     <h3 id="8">
@@ -227,9 +226,7 @@ ng serve</textarea
     </h3>
 
     <code-block language="" label="Bootstrap Install" controls>
-<textarea>npm install --save bootstap@3
-</textarea
->
+<textarea>npm install --save bootstap@3</textarea>
     </code-block>
 
     <figure>
@@ -251,7 +248,7 @@ ng serve</textarea
     accident, you can also disable it by setting <code>strict: false</code> in your <code>tsconfig.json</code> file.
     </p>
 
-    <h2 id="Section2">Section 2. <br>The Basics</h2>
+    <h2 id="Section2">Section 2. The Basics</h2>
 
     <h3>
       How an Angular App gets Loaded and Started
@@ -264,23 +261,185 @@ ng serve</textarea
     </p>
 
     <p>
-      main.ts -> app.module.ts -> "bootsrap: [AppComponent]" -> four component files of "css", "html", "spec.ts", and "module.ts"
+      main.ts -> app.module.ts -> "bootstrap: [AppComponent]" -> four component files of "css", "html", "spec.ts", and "module.ts"
     </p>
 
-    <br>
-    <br>
-    <hr>
-    <h3>Blanks to Use</h3>
+    <p>
+      Keep in mind that Angular in the end is a JS framework, changing you DOM ('HTML') at runtime.
+    </p>
+
+    <h3>
+      17. Components are Important!
+    </h3>
+
+    <p>
+      All Angular applications are made from components. The app-component is typically the base component. 
+    </p>
+
+    <h3>
+      18. Creating a New Component
+    </h3>
+
+    <p>
+      Components (by convention) are stored in a folder with the name of the component, then the class definition of
+      the component is stored in a <code>&lt;name&gt;.component.ts</code> file. In this section we created a component
+      with the name server. 
+    </p>
+
+    <p>
+      The <code>selector</code> within the <code>@Component</code> typescript class decorator is what is used to
+      tell Angular what to select within the HTML document. <code>selector</code> should be unique.
+    </p>
 
     <figure>
       <div class="figure-image-div">
-        <img src="static\images\capture_.PNG" alt="capture_#">
+        <img src="static\images\capture_6.PNG" alt="capture_6">
       </div>
-      <figcaption>Figure. </figcaption>
+      <figcaption>Figure. Files Created for First Component</figcaption>
     </figure>
 
-    <code-block language="" label="blank" controls>
-      <textarea>blank</textarea
-      >
-          </code-block>
+    <h3>
+      19. Understanding the Role of AppModule and Component Declaration
+    </h3>
+
+    <p>
+      Angular uses <code>components</code> to built web pages and <code>modulues</code> to bundle different pieces into packages.
+      For a lot of applications only one module or app is used for the application but an application can have more than one
+      module.
+    </p>
+
+    <p>
+      Within our main app module we need to register our newly created component within the decorator of <code>AppModule</code>.
+    </p>
+
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_7.PNG" alt="capture_7">
+      </div>
+      <figcaption>Figure. Registering New Component</figcaption>
+    </figure>
+
+    <h3>
+      20. Using Custom Components
+    </h3>
+
+    <p>
+      Will insert <code>&lt;app-server&gt;</code> into the <code>app.component.html</code> so that it can 
+      be displayed.
+    </p>
+
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_8.PNG" alt="capture_8">
+      </div>
+      <figcaption>Figure. File to Display Server Component</figcaption>
+    </figure>
+
+    <h3>
+      21. Creating Components with the CLI & Nesting Components
+    </h3>
+
+    <code-block language="" label="CLI Commands" controls>
+<textarea>ng generate component servers
+(same as ng g c server)</textarea>
+    </code-block>
+    
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_9.PNG" alt="capture_9">
+      </div>
+      <figcaption>Figure. Files Created for Servers Component</figcaption>
+    </figure>
+
+    <p>
+      Now you can insert <code>&lt;app-servers&gt;</code> into the <code>app.component.html</code> and reference in
+      mulitple <code>&lt;app-server&gt;</code> components in <code>servers.component.html</code>.
+    </p>
+
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_10.PNG" alt="capture_10">
+      </div>
+      <figcaption>Figure. Nesting Components</figcaption>
+    </figure>
+
+    <h3>
+      22. Working with Component Templates
+    </h3>
+
+    <p>
+      You can define the styling inside the typescript code. In the <code>@Component</code> decorator there must be either
+      a <code>templateURL</code>, which is an external template file, or you can use <code>template</code> and define this
+      with the typescript file itself. One of them must be present. This is the one property you have to have at all times.
+    </p>
+
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_11.PNG" alt="capture_11">
+      </div>
+      <figcaption>Figure. Template in TypeScript File</figcaption>
+    </figure>
+
+    <p>
+      Note that the <code>`</code> are used to allow for multiline. If you get bigger than three line it seems better to use
+      an external file.
+    </p>
+
+    <h3>
+      23. Working with Component Styles
+    </h3>
+
+    <p>
+      CSS file with <code>templateURL</code> or <code>styles</code>.
+    </p>
+
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_12.PNG" alt="capture_12">
+      </div>
+      <figcaption>Figure. Styles Reference In AppComponent</figcaption>
+    </figure>
+
+    <h3>
+      24. Fully Understanding the Component Selector
+    </h3>
+
+    <p>
+      Can use an alternate selector for components. If <code>selector: '[app-server]'</code> then in the template Angular
+      will select <code>&lt;div app-server&gt;&lt;div&gt;</code> (by attribute) or if <code>selector: '.app-server'</code>
+      then in the template Angular will select <code>&lt;div class='app-server'&gt;&lt;div&gt;</code> (by class). Just like CSS
+      selectors.
+    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div hidden>
+      <br>
+      <br>
+      <hr>
+      <h3>Blanks to Use</h3>
+  
+      <figure>
+        <div class="figure-image-div">
+          <img src="static\images\capture_.PNG" alt="capture_#">
+        </div>
+        <figcaption>Figure. </figcaption>
+      </figure>
+  
+      <code-block language="" label="blank" controls>
+        <textarea>blank</textarea
+        >
+            </code-block>
+    </div>
+    
 </html>
