@@ -457,9 +457,98 @@ ng serve</textarea>
       <figcaption>Figure. Template Display</figcaption>
     </figure>
 
+    <h3>
+      28. Property Binding
+    </h3>
 
+    <p>
+      <code>[]</code> brackets indicates that we want to dynamically bind some property in the html tempalte. So
+      in the below code the <code>diable</code> property is binded to the <code>allowNewServer</code> property in
+      the button html code. So the code will be disabled and after two seconds it will be enable by removing the
+      <code>diable</code> property from the <code>button</code> element.
+    </p>
+
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_15.PNG" alt="capture_15">
+      </div>
+      <figcaption>Figure. Servers TS file</figcaption>
+    </figure>
+    
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_16.PNG" alt="capture_16">
+      </div>
+      <figcaption>Figure. Servers html template</figcaption>
+    </figure>
+
+    <h3>
+      29. Property Binding vs String Interpolation
+    </h3>
+
+    <p>
+      If you are just outputting then string interpolation is most likely better but if you want to change that
+      content at some point then property binding would be better. Don't mix property binding and string interpolation.
+      So <span style="color: red;"><b>don't</b></span> do <code>[diabled]="{{!allowedNewServer}}"</code>. So we use
+      TypeScript code in between the <code>""</code>.
+    </p>
+
+    <h3>
+      30. Event Binding
+    </h3>
+
+    <p>
+      To bind an event to a function you can use event binding with the syntax of <code>(click)="myFunction()</code>.
+    </p>
+
+    <code-block language="ts" label="Angular Events" controls>
+<textarea>
+  // Full list of Angular Events
+(click)="myFunction()"      
+(dblclick)="myFunction()"   
+(submit)="myFunction()"
+(blur)="myFunction()"  
+(focus)="myFunction()" 
+(scroll)="myFunction()"
+(cut)="myFunction()"
+(copy)="myFunction()"
+(paste)="myFunction()"
+(keyup)="myFunction()"
+(keypress)="myFunction()"
+(keydown)="myFunction()"
+(mouseup)="myFunction()"
+(mousedown)="myFunction()"
+(mouseenter)="myFunction()"
+(drag)="myFunction()"
+(drop)="myFunction()"
+(dragover)="myFunction()"</textarea></code-block>
+
+  <p>
+    The below code updates the <code>&lt;p&gt;</code> element when the button is clicked.
+  </p>
     
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_17.PNG" alt="capture_17">
+    </div>
+    <figcaption>Figure. Servers TS</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_18.PNG" alt="capture_18">
+    </div>
+    <figcaption>Figure. Servers html template</figcaption>
+  </figure>
+
+  <h3>
+    31. Bindable Properties and Events
+  </h3>
+
+  <p>
+    
+  </p>
 
 
 
