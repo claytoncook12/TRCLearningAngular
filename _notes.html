@@ -547,10 +547,79 @@ ng serve</textarea>
   </h3>
 
   <p>
-    
+    How do you know to which Properties or Events of HTML Elements you may bind? 
+    You can basically bind to all Properties and Events - a good idea is to <code>console.log()</code> 
+    the element you're interested in to see which properties and events it offers.
   </p>
 
+  <p>
+    <span style="color: red;"><b>Important</b></span>: For events, you don't bind to onclick but only to click (=> (click)).
+  </p>
 
+  <p>
+  The MDN (Mozilla Developer Network) offers nice lists of all properties and events of the element you're
+  interested in. Googling for YOUR_ELEMENT properties  or YOUR_ELEMENT events  should yield nice results.
+  </p>
+
+  <h3>
+    32. Passing and Using Data with Event Binding
+  </h3>
+
+  <p>
+    <span style="color: red;"><b>Important</b></span>:<code>($event)</code> is a reserved variable name in the template
+    that sends data which is dependent on the event type. In this example we uses this event variable to get the data from
+    the event and pass it into the <code>{{ serverName }}</code> variable in the template.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_19.PNG" alt="capture_19">
+    </div>
+    <figcaption>Figure. servers.component.html</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_20.PNG" alt="capture_20">
+    </div>
+    <figcaption>Figure. servers.component.ts</figcaption>
+  </figure>
+
+  <h3>
+    33. FormsModule is Required for Two-Way-Binding!
+  </h3>
+
+  <span style="color: red;"><b>Important</b></span>: For Two-Way-Binding (covered in the next lecture) to work,
+  you need to enable the <code>ngModel</code> directive. This is done by adding the <code>FormsModule</code> to the
+  <code>imports[]</code> array in the AppModule.
+
+  You then also need to add the import from <code>@angular/forms</code>  in the app.module.ts file:
+  
+  <code-block language="ts" label="FormsModule is Required for Two-Way-Binding" controls>
+  <textarea>import { FormsModule } from '@angular/forms';</textarea></code-block>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_21.PNG" alt="capture_21">
+    </div>
+    <figcaption>Figure. Imporing Angular Forms</figcaption>
+  </figure>
+
+  <h3>
+    34. Two-Way-Binding
+  </h3>
+
+  <p>
+    Two way binding is a easier way to tie variables to events. <code>[(ngModel)]</code> will tie a variable to events
+    that happen within the browser. This reacts to events in both directions.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_22.PNG" alt="capture_22">
+    </div>
+    <figcaption>Figure. Two-Way-Binding Example</figcaption>
+  </figure>
 
 
 
