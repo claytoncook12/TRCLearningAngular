@@ -64,9 +64,12 @@
 
       .print-button {
         float: right;
-        margin: 10px;
+        margin: 15px;
+        padding: 2px;
         position: sticky;
         top: 10px;
+        background-color: white;
+        border: 1px solid black;
       }
 
       code {
@@ -74,6 +77,8 @@
         color: #f8f8f2;
         border-radius: 0.3em;
         padding: 4px 5px 6px;
+        margin: 1px;
+        display: inline-block;
       }
     </style>
 
@@ -411,6 +416,49 @@ ng serve</textarea>
       selectors.
     </p>
 
+    <h3>
+      26. What is Databinding?
+    </h3>
+
+    <p>
+      Databinding is a connection between the TypeScript Code and the Template.
+      <ul style="margin-left: 2em;">
+        <li>Output Data (TS to Tempalte)</li>
+          <ol style="list-style-type: square;">
+            <li style="margin-left:2em">String Interpolation: <code>{{ data }}</code></li>
+            <li style="margin-left:2em;">Property Binding: <code>[property]="data"</code></li>
+         </ol>
+         <li>Output Data (Template to TS)</li>
+          <ol style="list-style-type: square;">
+            <li style="margin-left:2em">Event Binding: <code>(event)="expression"</code></li>
+          </ol>
+        <li>Two-Way-Binding (Both Ways)</li>
+          <ol style="list-style-type: square;">
+            <li style="margin-left:2em">Event Binding: <code>[(ngModel)} = "data"</code></li>
+          </ol>
+      </ul>
+    </p>
+
+    <h3>
+      27. String Interpolation
+    </h3>
+
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_13.PNG" alt="capture_13">
+      </div>
+      <figcaption>Figure. TypeScript File with property and method</figcaption>
+    </figure>
+
+    <figure>
+      <div class="figure-image-div">
+        <img src="static\images\capture_14.PNG" alt="capture_14">
+      </div>
+      <figcaption>Figure. Template Display</figcaption>
+    </figure>
+
+
+    
 
 
 
