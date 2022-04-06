@@ -116,12 +116,12 @@
       </li>
       <li class="single-nav">
         <a href="#Section1">
-          <span>Section 1</span>
+          <span>Section 1<br>Getting Started</span>
         </a>
       </li>
       <li class="single-nav">
         <a href="#Section2">
-          <span>Section 2</span>
+          <span>Section 2<br>The Basics</span>
         </a>
       </li>
     </ul>
@@ -421,7 +421,7 @@ ng serve</textarea>
     </h3>
 
     <p>
-      Databinding is a connection between the TypeScript Code and the Template.
+      <span style="color: red;"><b>Databinding</b></span> is a connection between the TypeScript Code and the Template.
       <ul style="margin-left: 2em;">
         <li>Output Data (TS to Tempalte)</li>
           <ol style="list-style-type: square;">
@@ -602,7 +602,7 @@ ng serve</textarea>
     <div class="figure-image-div">
       <img src="static\images\capture_21.PNG" alt="capture_21">
     </div>
-    <figcaption>Figure. Imporing Angular Forms</figcaption>
+    <figcaption>Figure. Importing Angular Forms</figcaption>
   </figure>
 
   <h3>
@@ -620,6 +620,208 @@ ng serve</textarea>
     </div>
     <figcaption>Figure. Two-Way-Binding Example</figcaption>
   </figure>
+
+  <h3>
+    Assignment 2. Practicing Databinding
+  </h3>
+
+  <ol>
+    <li>Add a Input field which updates a property ('username') via Two-Way-Binding</li>
+    <li>Output the username property via String Interpolation (in a paragraph below the input)</li>
+    <li>Add a button which may only be clicked if the username is NOT an empty string</li>
+    <li>Upon clicking the button, the username should be reset to an empty string</li>
+  </ol>
+
+  <h3>
+    Assignment 2 Solution
+  </h3>
+  
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_23.PNG" alt="capture_23">
+    </div>
+    <figcaption>Figure. HTML File</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_24.PNG" alt="capture_24">
+    </div>
+    <figcaption>Figure. TS File</figcaption>
+  </figure>
+
+  <h3>
+    What are Directives?
+  </h3>
+
+  <p>
+    Directives are Instructions in the DOM. Componenets are directives with templates. You can also add
+    directives without templates. Most directives are added to the html template with attribute selectors.
+  </p>
+
+  <code-block language="html" label="Directives Example HTML" controls>
+    <textarea><p appTurnGreen>Receives a green background.</p></textarea>
+  </code-block>
+
+  <code-block language="ts" label="Directives Example TS" controls>
+<textarea>
+@Directive({
+    selector:'[appTurnGreen]'
+})
+export class TurnGreenDirective {
+  ...
+}</textarea>
+  </code-block>
+
+  <h3>
+    38. Using ngIf to Output Data Conditionally
+  </h3>
+
+  <p>
+    ngIf is a <span style="color: red;"><b>structural directive</b></span> so it requires a <code>*</code> before the directive in the html tempalte.
+    The below <code>&lt;p&gt;</code> element will only be displayed when <code>serverCreated</code> evaluates to true.
+  </p>
+
+<code-block language="html" label="ngIf Example" controls>
+<textarea><p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p></textarea>
+</code-block>
+
+  <h3>
+    Enhancing ngIf with an Else Condition
+  </h3>
+
+  <p>
+    An <code>Else</code> condition can be added to the ngIf station within the TypeScript code <code>""</code> This example
+    shows uses a local reference <code>#noServer</code> that evaluates to true using the <code>Else</code> condition.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_25.PNG" alt="capture_25">
+    </div>
+    <figcaption>Figure. ngIf with Else</figcaption>
+  </figure>
+
+  <h3>
+    40. Styling Elements Dynamically with ngStyle
+  </h3>
+
+  <p>
+    We are going to look at an <span style="color: red;"><b>attribute directive</b></span> which don't add or remove elements,
+    they only change the element they are placed on. In this example we will bind to the <code>ngStyle</code> built in
+    directive using the <code>[]</code>. Then we pass the <code>{}</code> object with TS code to evaluate. In this case we
+    set the backgournd color dependent on how <code>getColor()</code> is evaluated.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_27.PNG" alt="capture_27">
+    </div>
+    <figcaption>Figure. TS Class</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_26.PNG" alt="capture_26">
+    </div>
+    <figcaption>Figure. ngStyle with Binding</figcaption>
+  </figure>
+
+  <h3>
+    41. Applying CSS Classes Dynamically with ngClass
+  </h3>
+
+  <p>
+    In this example we will set a class to the <code>&lt;p&gt;</code> element depending on <code>serverStatus</code>.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_28.PNG" alt="capture_28">
+    </div>
+    <figcaption>Figure. TS File</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_29.PNG" alt="capture_29">
+    </div>
+    <figcaption>Figure. CSS</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_30.PNG" alt="capture_30">
+    </div>
+    <figcaption>Figure. HTML</figcaption>
+  </figure>
+
+  <h3>
+    42. Outputting Lists for ngFor
+  </h3>
+
+  <p>
+    In this example we use the <code>ngFor</code> with the <code>*</code> structural directive to loop over
+    the <code>servers</code> list with the TS file.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_31.PNG" alt="capture_31">
+    </div>
+    <figcaption>Figure. TS</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_32.PNG" alt="capture_32">
+    </div>
+    <figcaption>Figure. HTML</figcaption>
+  </figure>
+
+  <h3>
+    Assignment 3: Practicing Directives
+  </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
