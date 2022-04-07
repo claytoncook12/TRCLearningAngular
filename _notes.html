@@ -780,10 +780,60 @@ export class TurnGreenDirective {
   </figure>
 
   <h3>
+    44. Geeting the Index when using ngFor
+  </h3>
+
+  <p>
+    Can get the index within <code>ngFor</code> by using <code>index</code>.
+  </p>
+
+  <code-block language="html" label="Index in Angular Tempaltes" controls>
+    <textarea><div *ngIf="let logItem of log; let i = index"></div></textarea>
+  </code-block>
+
+  <h3>
     Assignment 3: Practicing Directives
   </h3>
 
+  <ol>
+    <li>Add A button which says 'Display Details'</li>
+    <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+    <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+    <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li>
+    <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
+  </ol>
 
+  <h3>
+    Assignment 3: My Solution
+  </h3>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_33.PNG" alt="capture_33">
+    </div>
+    <figcaption>Figure. Display</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_34.PNG" alt="capture_34">
+    </div>
+    <figcaption>Figure. HTML</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_35.PNG" alt="capture_35">
+    </div>
+    <figcaption>Figure. TS</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_36.PNG" alt="capture_36">
+    </div>
+    <figcaption>Figure. CSS</figcaption>
+  </figure>
 
 
 
