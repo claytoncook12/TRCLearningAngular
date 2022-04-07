@@ -124,6 +124,11 @@
           <span>Section 2<br>The Basics</span>
         </a>
       </li>
+      <li class="single-nav">
+        <a href="#Section3">
+          <span>Section 3<br>Course Project - The Basics</span>
+        </a>
+      </li>
     </ul>
   </div>
 
@@ -150,7 +155,7 @@
     </p>
     <hr />
 
-    <h2 id="Section1">Section 1 <br>Gettings Started</h2>
+    <h2 id="Section1">Section 1. Getting Started</h2>
 
     <h3>Module Content</h3>
     <ul id="ul-space">
@@ -262,7 +267,7 @@ ng serve</textarea>
     <p>
       "index.html" is served by the server. Then the <code>app-root</code> is run to tie together the whole application.
       The <code>selector</code> inside the app.component.ts then tells where insert the component. Then the import scripts
-      are run that are inserted by the <code>ngserve</code> cli command. 
+      are run that are inserted by the <code>ng serve</code> cli command. 
     </p>
 
     <p>
@@ -795,13 +800,15 @@ export class TurnGreenDirective {
     Assignment 3: Practicing Directives
   </h3>
 
-  <ol>
-    <li>Add A button which says 'Display Details'</li>
-    <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
-    <li>Toggle the displaying of that paragraph with the button created in the first step</li>
-    <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li>
-    <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
-  </ol>
+  <p>
+    <ol>
+      <li>Add A button which says 'Display Details'</li>
+      <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+      <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+      <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li>
+      <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
+    </ol>
+  </p>
 
   <h3>
     Assignment 3: My Solution
@@ -834,6 +841,197 @@ export class TurnGreenDirective {
     </div>
     <figcaption>Figure. CSS</figcaption>
   </figure>
+
+  <h2 id="Section3">
+    Section 3. Course Project - The Basics
+  </h2>
+
+  <h3>
+    45. Project Introduction
+  </h3>
+
+  <p>
+    Reciepe Book and Shopping List project.
+  </p>
+
+  <h3>
+    46. Planning the App
+  </h3>
+
+  <p>
+    Planned Components
+    <ol style="margin-left: 2rem; list-style-type: '-'">
+      <li>Root</li>
+      <li>Header</li>
+      Shopping List
+        <ol style=" margin-left: 2rem; list-style-type: square;">
+          <li>Shopping List Edit</li>
+          <li>Shopping List</li>
+        </ol>
+      Recipe Book
+        <ol style=" margin-left: 2rem; list-style-type: square;">
+          <li>Recipe List</li>
+          <li>Recipe Item</li>
+          <li>Recipe Detail</li>          
+        </ol>
+    </ol>
+  </p>
+
+  <h3>
+    48. Setting up the Application
+  </h3>
+
+  <p><strong>MUST&nbsp;READ</strong></p>
+  
+  <p>
+    In the next lecture, we set up the course project.
+  </p>
+  
+  <p>
+    Make sure, you do create that app by also adding the <code>--no-strict</code> flag to the <code>ng new</code> 
+    command - otherwise you will run into issues later on (we'll still dive into that "Strict Mode"&nbsp;later 
+    in the course of course, no worries)!</p><p>We'll also install the Bootstrap CSS&nbsp;Framework and in this 
+    course, we use version 3 of the framework. Install it via <code>npm install --save bootstrap@3</code>
+    &nbsp; =&gt;&nbsp;The <code>@3</code>&nbsp; is important!</p><p>Additionally, when using a project created 
+      with Angular CLI&nbsp;6+ (check via <code>ng v</code>&nbsp;), you'll have an <code>angular.json</code>&nbsp; 
+      file instead of an <code>.angular-cli.json </code>&nbsp;file. In that file, you still need to add Bootstrap 
+      to the <code>styles[]</code>&nbsp; array as shown in the next video, but the path should be 
+      <code>node_modules/bootstrap/dist/css/bootstrap.min.css</code>&nbsp;, <strong>NOT</strong> 
+      <code>../node_modules/bootstrap/dist/css/bootstrap.min.css</code>&nbsp;. The leading <code>../</code>
+      &nbsp; must not be included.
+  </p>
+
+  <h3>
+    49. Creating the Components
+  </h3>
+
+  <p>
+    Directory Tree after component creation. Note in windows cmd you can use <code>tree /f</code>
+    to display directory tree.
+  </p>
+
+  <p>
+    <code>
+      app<br>
+      ├───header<br>
+      ├───recipes<br>
+      │   ├───recipe-detail<br>
+      │   └───recipe-list<br>
+      │       └───recipe-item<br>
+      └───shopping-list<br>
+          └───shopping-edit<br>
+    </code>
+  </p>
+
+  <h3>
+    50. Using the Components
+  </h3>
+
+  <p>
+    Created the Main Layout of the app.
+  </p>
+
+  <h3>
+    51. Adding a Navigation Bar
+  </h3>
+
+  <p>
+    <code-block language="html" label="Navbar HTML" controls>
+<textarea>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a href="#" class="navbar-brand">Recipe Book</a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li><a href="#">Recipes</a></li>
+              <li><a href="#">Shopping List</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                  <a href="" class="dropdoen-toggle" role="button">Manage <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">Save Data</a></li>
+                      <li><a href="#">Fetch Data</a></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav></textarea>
+      </code-block>
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_37.PNG" alt="capture_37">
+    </div>
+    <figcaption>Figure. App in Browser</figcaption>
+  </figure>
+
+  <h3>
+    52. Alternative Non-Collapsable Nav Bar
+  </h3>
+
+  <p>
+    The way we added it, the Navbar will collapse on smaller screens. Since we didn't implement a 
+    Hamburger menu, that means that there's no way of accessing our links on smaller screens.
+  </p>
+  
+  <p>
+    You can either add such a menu on your own (see below), or you replace <code>collapse&nbsp;navbar-collapse</code>
+    &nbsp; with just <code>navbar-default</code>.
+  </p>
+  
+  <p>
+    Adding a Hamburger Menu:
+  </p>
+  
+  <p>
+    Alternatively, if you want to make the navigation bar responsive, please replace these lines in 
+    <code>header.component.html</code>:
+  </p>
+
+  <p>
+    <code-block language="html" label="Navbar HTML" controls>
+<textarea>
+<div class="navbar-header">
+  <a routerLink="/" class="navbar-brand">Recipe Book</a>
+</div>
+<div class="collapse navbar-collapse"></textarea>
+      </code-block>
+  </p>
+
+  <p>
+    with these lines:
+  </p>
+
+  <p>
+    <code-block language="html" label="Navbar HTML" controls>
+<textarea>
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
+  <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+  </button>
+  <a routerLink="/" class="navbar-brand">Recipe Book</a>
+</div>
+<div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true"></textarea>
+      </code-block>
+  </p>  
+  
+  <p>
+    and add these line to <code>header.component.ts</code>: <code>collapsed = true;</code>.
+  </p>
+
+  <h3>
+    53. Creating a "Recipe" Model
+  </h3>
+
+  <p>
+    In this section we are just going to create a vanilla TypeScript model.
+  </p>
 
 
 
