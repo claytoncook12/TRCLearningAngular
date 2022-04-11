@@ -80,6 +80,20 @@
         margin: 1px;
         display: inline-block;
       }
+
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin: auto;
+        text-align: center;
+        max-width: 1200px;
+        padding: 5px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #b1b1b1;
+      };
+
     </style>
 
     <!-- Javascript imports -->
@@ -134,6 +148,11 @@
           <span>Section 4<br>Debugging</span>
         </a>
       </li>
+      <li class="single-nav">
+        <a href="#Section9">
+          <span>Section 9<br>Using Services & Dependency Injection</span>
+        </a>
+      </li>
     </ul>
   </div>
 
@@ -161,11 +180,6 @@
     <hr />
 
     <h2 id="Section1">Section 1. Getting Started</h2>
-
-    <h3>Module Content</h3>
-    <ul id="ul-space">
-      <li>Suff</li>
-    </ul>
 
     <br />
     <h3 id="2">
@@ -1276,11 +1290,216 @@ export class Ingredient {
   </h3>
 
   <p>
-    
+    In general if an error occurs you will see it with the developer tools in the browser.
+  </p>
+
+  <h3>
+    63. Debugging Code in the Browser Using Sourcemaps
+  </h3>
+
+  <p>
+    In the Chrome browser you can look in the Sources tab. and look for the <code>main.bundle.js</code>. When you click for
+    a break point here then you will be taken to a TS file. This is done by <span style="color: red;"><b>sourcemaps</b></span>.
+    These allow the browser to map the javascript files to the TypeScript code. So we can place breakpoints in our
+    TypeScript files.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_45.PNG" alt="capture_45">
+    </div>
+    <figcaption>Figure. Main.js bundle in browser</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_46.PNG" alt="capture_46">
+    </div>
+    <figcaption>Figure. TS files in Webpack for Developing</figcaption>
+  </figure>
+
+  <h2 id="Section9">
+    Section 9. Using Services & Dependency Injection
+  </h2>
+
+  <h3>
+    105. Module Introduction
+  </h3>
+
+  <p>
+    <span style="color: red;"><b>Services</b></span> are an Angular class that is useful when either
+    you are duplicating a function or you are providing data. It acts as a center buisness unit.
+  </p>
+
+  <h3>
+    106. Why would you need a Service?
+  </h3>
+
+  <p>
+    Services can make it simpler to use data across you app.
+  </p>
+
+  <h3>
+    107. Creating a Logging Service
+  </h3>
+
+  <p>
+    First we will create a service to log data. We will be sticking our first service in a file just under app called
+    <code>logging.service.ts</code>. A service is just a normal typescript class. 
+  </p>
+
+  <p>
+    <code-block language="ts" label="Logging Service" controls>
+<textarea>
+export class LoggingService {
+  logStatusChange(status: string) {
+      console.log('A server status changed, new status: ' + status);
+  }
+}</textarea>
+    </code-block>
+  </p>
+
+  <h3>
+    108. Injecting the Logging Service into Components
+  </h3>
+
+  <p>
+    Angular uses dependency injector to allow one class to depend on another class so that functions can be used by 
+    one class from another. In order to give instruction to Angular to create an instance of this class 
+    to use in the component we use a <code>constructor</code> keyword.
+  </p>
+
+  <p>
+    So the <code>LoggingService</code> we import at the top, register it in <code>providers</code> within
+    the <code>@Component</code>, use a <code>constructor</code> to create the instance of the class
+    and then use the class that was constructed.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_47.PNG" alt="capture_47">
+    </div>
+    <figcaption>Figure. LoggingService Injection #1</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_48.PNG" alt="capture_48">
+    </div>
+    <figcaption>Figure. LoggingService Injection #2</figcaption>
+  </figure>
+
+  <h3>
+    109. Creating a Data Service
+  </h3>
+
+  <p>
+    First we will create a new typscript file that will house our service class. <code>accounts.service.ts</code> within
+    the <code>app</code> folder.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_49.PNG" alt="capture_49">
+    </div>
+    <figcaption>Figure. accounts.service.ts</figcaption>
+  </figure>
+
+  <p>
+    Now we will update the <code>app.components</code>, <code>new-account.components</code> and <code>account.components</code>
+    to use this service.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_50.PNG" alt="capture_50">
+    </div>
+    <figcaption>Figure. app.components.ts</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_51.PNG" alt="capture_51">
+    </div>
+    <figcaption>Figure. new-account.components.ts</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_52.PNG" alt="capture_52">
+    </div>
+    <figcaption>Figure. account.components.ts</figcaption>
+  </figure>
+
+  <p>
+    <span style="color: red;"><b>Important</b></span>: There is still a step left to complete since the
+    accounts list is not being updated on the screen when the data is added via the <code>accounts.service</code>.
+  </p>
+
+  <h3>
+    110. Understanding the Hierarchical Injector
+  </h3>
+
+  <p>
+    If we provide a service somewhere in the app Angular can create an instance that is shared depending on location
+    in the app.
+  </p>
+
+  <table>
+    <tr>
+      <th>Location</th>
+      <th>Where Service is Avaliable</th>
+    </tr>
+    <tr>
+      <td><code>AppModule</code></td>
+      <td>Same Instance of Service is available <b>Application-wide</b></td>
+    </tr>
+    <tr>
+      <td><code>AppComponent</code></td>
+      <td>
+        Same Instance of Service is availabe for <b>all Components</b>
+        (but <b>not for other Services</b>)
+      </td>
+    </tr>
+    <tr>
+      <td><code>Any other component</code></td>
+      <td>
+        Same Instance of Service is availabe for <b>the Component and all its
+        child components</b>
+      </td>
+    </tr>
+  </table>
+
+  <h3>
+    111. How many Instances of Service Should It Be?
+  </h3>
+
+  <p>
+    Right now in the app we have three instaces of the <code>accounts.service.ts</code>. The first is in
+    <code>app.component.ts</code>, then <code>account.component.ts</code>, and <code>new_account.component.ts</code>
+  </p>
+
+  <p>
+    To fix this issue of creating mulitple instance of <code>AccountsService</code> we can remvoe the providers register
+    within the components. Now when we provide the constructor it now to reference the original instance within the
+    <code>app.component.ts</code>
   </p>
 
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_53.PNG" alt="capture_53">
+    </div>
+    <figcaption>Figure. Remove providers reference</figcaption>
+  </figure>
 
+  <h3>
+    112. Injecting Services into Services
+  </h3>
+
+  <p>
+
+  </p>
 
 
 
