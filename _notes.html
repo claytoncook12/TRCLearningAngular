@@ -31,7 +31,6 @@
       .figure-image-div {
         max-width: 1200px;
         max-height: 800px;
-        overflow-x: scroll;
       }
 
       .figure-image-div img {
@@ -1498,17 +1497,108 @@ export class LoggingService {
   </h3>
 
   <p>
-
+    The highest possible level of the providers array is in the <code>app.module.ts</code>. This issures
+    that the whole applications users the same service. Now with this setup up can inject a service
+    into a service.
   </p>
 
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_54.PNG" alt="capture_54">
+    </div>
+    <figcaption>Figure. Add To App.Module.ts Provider</figcaption>
+  </figure>
+
+  <p>
+    In order to use the <code>LoggingService</code> within the <code>accounts.service.ts</code> we will need
+    to provide the constructor as well as attached META data with <code>@Injectable</code>. This allows this
+    component to be injected into another service. You add the <code>@Injectable</code> onto the thing that
+    is receving the injection.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_55.PNG" alt="capture_55">
+    </div>
+    <figcaption>Figure. Injecting LoggingService into AccountsService</figcaption>
+  </figure>
+
+  <p>
+    It is recommended for convention that any services that are created that you add the <code>@Injectable</code>
+    decorator so that you can inject service into that service if needed.
+  </p>
+
+  <h3>
+    113. Using Services for Cross-Component Communication 
+  </h3>
+
+  <p>
+    We want to provide an event that we can trigger in one component and listen to in another component. In this
+    example we setup the <code>EventEmitter</code> in <code>accounts.service.ts</code> that is used in
+    <code>account.component.ts</code> and is <code>subscribe</code> in <code>new-account.component.ts</code>.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_56.PNG" alt="capture_56">
+    </div>
+    <figcaption>Figure. EventEmitter in accounts.servie.ts</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_57.PNG" alt="capture_57">
+    </div>
+    <figcaption>Figure. emit in account.component.ts</figcaption>
+  </figure>
 
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_58.PNG" alt="capture_58">
+    </div>
+    <figcaption>Figure. new-account.component.ts listens to statusUpdated</figcaption>
+  </figure>
 
+  <h3>
+    Services in Angular 6+
+  </h3>
 
+  <p>
+    If you're using <strong>Angular 6+</strong> (check your <code>package.json</code>&nbsp; to find out), you can 
+    provide application-wide services in a different way.</p><p>Instead of adding a service class to the 
+    <code>providers[]</code>&nbsp; array in <code>AppModule</code>&nbsp;, you can set the following config 
+    in <code>@Injectable()</code>&nbsp;:
+    <code-block language="ts" label="" controls>
+<textarea>@Injectable({providedIn: 'root'})
+export class MyService { ... }</textarea>
+    </code-block>   
+    
+    This is exactly the same as:
 
+    <code-block language="ts" label="" controls>
+<textarea>export class MyService { ... }</textarea>
+    </code-block>   
 
+    and 
 
+    <code-block language="ts" label="" controls>
+<textarea>import { MyService } from './path/to/my.service';
+
+@NgModule({
+    ...
+    providers: [MyService]
+})
+export class AppModule { ... }</textarea>
+    </code-block>   
+
+    Using this new syntax is <strong>completely optional</strong>, the traditional syntax (using 
+    <code>providers[]</code>&nbsp;) will still work. The "new syntax" does offer one advantage 
+    though:&nbsp;Services <strong>can be loaded lazily </strong>by Angular (behind the scenes) 
+    and redundant code can be removed automatically. This can lead to a better performance and 
+    loading speed - though this really only kicks in for bigger services&nbsp;and apps in general.
+  </p>
 
 
 
