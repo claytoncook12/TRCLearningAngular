@@ -28,16 +28,12 @@
         padding: 0px;
       }
 
-      .figure-image-div {
-        max-width: 1200px;
-        max-height: 800px;
-      }
-
       .figure-image-div img {
         margin: 20px 0 0 0;
         padding: 0px;
         border: 1px #000000 solid;
-        max-height: 800px
+        max-height: 800px;
+        max-width: 800px;
       }
 
       figcaption {
@@ -46,14 +42,6 @@
         padding: 2px;
         text-align: center;
         margin: 5px 0 10px 0;
-      }
-
-      .text-blue {
-        color: #b1eaf7;
-        background-color: none;
-        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-          1px 1px 0 #000;
-        -webkit-font-smoothing: antialiased;
       }
 
       .text-red {
@@ -155,6 +143,11 @@
       <li class="single-nav">
         <a href="#Section13">
           <span>Section 13<br>Understanding Observables</span>
+        </a>
+      </li>
+      <li class="single-nav">
+        <a href="#Section15">
+          <span>Section 15<br>Handling Forms in Angular Apps</span>
         </a>
       </li>
     </ul>
@@ -1657,18 +1650,159 @@ export class AppModule { ... }</textarea>
   </h3>
   
   <p>
-    
+    An observable is a data source. Like User Input Events, Http Requests, Triggered in Code. The 
+    observer is how to handle those observable. The three types of data types are Handle Data, 
+    Handle Error, and Handle Completion. These are used to handle asynchronous tasks. One major
+    advantage to observable is that they are operators.
   </p>
 
+  <h3>
+    171. Install RxJS
+  </h3>
 
+  <p>
+    In order to follow along smoothly with the course examples, make sure you install RxJS v6 by running
+    <code>npm install --save rxjs@6</code>
+  </p>
 
+  <p>
+    In addition, also install the rxjs-compat package: <code>npm install --save rxjs-compat</code>
+  </p>
 
+  <h3>
+    172. Analyzing Angular Observables
+  </h3>
 
+  <p>
+    <span style="color: red;"><b>Observables</b></span> are constructs to which you can subscribe to be informed 
+    about the changes in data. Observables are that stream of data and whenever a new data piece is emitted,
+    our subsciption will know about it. In the next section we will build an observable from the ground up.
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_64.PNG" alt="capture_64">
+    </div>
+    <figcaption>Figure. Routing Observable that is Subscribed Too</figcaption>
+  </figure>  
 
+  <h3>
+    173. Getting Closer to the Core of Observables
+  </h3>
 
+  <p>
+    The ability to add observables is added throught the <span style="color: red;"><b>RxJS</b></span> package. In this
+    example we will use <code>interval</code> from the <code>RxJS</code> package to emit a count to the counsole every
+    1000 ms.
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_65.PNG" alt="capture_65">
+    </div>
+    <figcaption>Figure. Use of Intercal From RxJS package</figcaption>
+  </figure>
 
+  <p>
+    Note that the observable will keep emitting values regardless of weither you are still interested in the value. So
+    you will need to unsubscribe to an observable it you are no longer interested in that observable. This will
+    interduce a <span style="color: red;"><b>memory leak</b></span> into. In order to unsubsribe when the component is no longer active we can use
+    <code>ngOnDestroy</code> from <code>@angular/core</code>. Now when the url moves to <code>/user/1</code> then 
+    <code>firstObsSubscription</code> will stop emitting its value since we <code>unsubscribed</code>.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_66.PNG" alt="capture_66">
+    </div>
+    <figcaption>Figure. Use of ngOnDestroy</figcaption>
+  </figure>
+
+  <h3>
+    174. Building a Custom Observable
+  </h3>
+
+  <p>
+    We are going to rebuild the <code>interval</code> function manually.  
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_67.PNG" alt="capture_67">
+    </div>
+    <figcaption>Figure. Custom Observable</figcaption>
+  </figure>
+
+  <h3>
+    175. Errors & Completion
+  </h3>
+
+  <p>
+    Emiting data is primary function of Observable. But for HTML requests we may get an error. When an error
+    is reached by on observable the action that it is completing is killed. To handle errors you provide
+    a second parameter within the observable.
+  </p>
+
+  <p>
+    We can also complete an observable with <code>observable.complete()</code>. We can react to this completion with
+    an additional function as the third argument. Also important is to know that an error cancels an obervable it
+    does not complete it.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_68.PNG" alt="capture_68">
+    </div>
+    <figcaption>Figure. App Console Log</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_69.PNG" alt="capture_69">
+    </div>
+    <figcaption>Figure. TS of Obervable</figcaption>
+  </figure>
+
+  <h3>
+    176. Obervables & You!
+  </h3>
+  
+  <p>
+    We will very rarely build our own obervable. Mostly you will use subscribe to interact with those observables.
+  </p>
+
+  <h3>
+    177. Understanding Operators
+  </h3>
+
+  <p>
+    Operators are the majic feature of the <code>RxJS</code> library. <span style="color: red;"><b>Operators</b></span>
+    do some sort of process or transformation 
+    on the data that is recieved from an operator.
+  </p>
+
+  <h3>
+    Subjects
+  </h3>
+
+  <p>
+    Import subject from RxJS: <code>import { Subject } form 'rxjs';</code> This subject can replace EventEmitters
+    that pass data between components. With Subject you can call the <code>next()</code> on that Subject
+    from outside the Subject. Subjects can replace <code>eventEmitter</code>
+  </p>
+  
+
+  <h2 id="Section15">
+    Section 15. Handling Forms in Angular Apps
+  </h2>
+
+  <h3>
+    183. Module Introduction
+  </h3>
+
+  <p>
+
+  </p>
 
 
 
