@@ -1788,7 +1788,8 @@ export class AppModule { ... }</textarea>
   <p>
     Import subject from RxJS: <code>import { Subject } form 'rxjs';</code> This subject can replace EventEmitters
     that pass data between components. With Subject you can call the <code>next()</code> on that Subject
-    from outside the Subject. Subjects can replace <code>eventEmitter</code>
+    from outside the Subject. Subjects can replace <code>eventEmitter</code> This is the best way to pass
+    variables from A to B.
   </p>
   
 
@@ -1801,8 +1802,162 @@ export class AppModule { ... }</textarea>
   </h3>
 
   <p>
-
+    With Angular you will not be submitting forms through the url but you will be using Angular to submit forms.
   </p>
+
+  <h3>
+    184. Why do we Need Angular's Help?
+  </h3>
+
+  <p>
+    Angular hsa built in features to turn a forms input information into some JS object that you can use.
+  </p>
+
+  <h3>
+    185. Template-Driven (TD) vs Reactive Approach
+  </h3>
+
+  <p>
+    Template-Driven lets Angular infer the Form Object from the DOM. 
+  </p>
+
+  <p>
+    Reactive is where the form is created programmatically and synchronized with the DOM
+  </p>
+
+  <h3>
+    186. An Example Form
+  </h3>
+
+  <p>
+    Starting HTML Form
+    <code-block language="html" label="HTML Form" controls>
+<textarea><div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form>
+        <div id="user-data">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control">
+          </div>
+          <button class="btn btn-default" type="button">Suggest an Username</button>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input type="email" id="email" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <select id="secret" class="form-control">
+            <option value="pet">Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div></textarea>
+    </code-block>
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_70.PNG" alt="capture_70">
+    </div>
+    <figcaption>Figure. App From Look</figcaption>
+  </figure>
+
+  <p>
+    On the <code>&lt;form&gt;</code> element we do not have the regular <code>action</code> or <code>method</code> attributes
+    since this will be handled by Angular.
+  </p>
+
+  <h3>
+    187. TD: Creating the From and REgistering the Constrols
+  </h3>
+
+  <p>
+    In order for angular to recognize your form you need to import <code>FormsModule</code> within the <code>app.module.ts</code>.
+    This is the import that will build the form object.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_71.PNG" alt="capture_71">
+    </div>
+    <figcaption>Figure. Forms Modulue Import</figcaption>
+  </figure>
+
+  <p>
+    To add an input as a control you add <code>ngModel</code> as a attribute type as well as a
+    the <code>name</code> attribute. 
+  </p>
+
+  <code-block language="html" label="HTML Form" controls>
+<textarea><form>
+    <div id="user-data">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+          type="text"
+          id="username"
+          class="form-control"
+          ngModel
+          name="username"
+        >
+      </div>
+      ...</textarea>
+  </code-block>
+
+  <h3>
+    188. TD: Submitting and Using the Form
+  </h3>
+
+  <p>
+    So to tell angular to get the form data when the submit button you can use this syntax,<br>
+    <code style="display: block; margin: 5px;">&lt;form (ngSubmit)="onSubmit(f)" #f="ngForm"&gt;</code>
+    which bascially use the <code>#f</code> to assign the <code>ngForm</code> js object to <code>f</code> that
+    then is passed to the ts scripts when the submit action is triggered.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_72.PNG" alt="capture_72">
+    </div>
+    <figcaption>Figure. ngForm in Console on Submit</figcaption>
+  </figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
