@@ -1929,30 +1929,284 @@ export class AppModule { ... }</textarea>
     <figcaption>Figure. ngForm in Console on Submit</figcaption>
   </figure>
 
+  <h3>
+    189. TD: Undertstanding Form State
+  </h3>
 
+  <p>
+    We can look at the <code>NgModel</code> properties. Things like controsl, value, touched, untouched, dirty, etc.
+  </p>
 
+  <h3>
+    190. TD: Accessing the Form with @ViewChild
+  </h3>
 
+  <p>
+    An alternate way of submitting the form is using <code>@ViewChild</code>. The Example below shows the <code>f</code>
+    reference being ties to the NgForm object. This could be useful if you need to access the form before the
+    from is submitted.
+  </p>
 
+  <code-block language="ts" label="@ViewChild in TS Component" controls>
+<textarea>export class AppComponent {
+  @ViewChild('f') signupForm: NgForm;
+}</textarea>
+  </code-block>
 
+  <h3>
+    191. TD. Adding Validation to Check User Input
+  </h3>
 
+  <p>
+    <code-block language="html" label="Use of Required and email attributes in Form" controls>
+<textarea>...
+<div class="form-group">
+  <label for="username">Username</label>
+  <input 
+    type="text"
+    id="username"
+    class="form-control"
+    ngModel
+    name="username"
+    required
+  >
+  </div>
+  <button class="btn btn-default" type="button">Suggest a Username</button>
+  <div class="form-group">
+  <label for="email">Mail</label>
+  <input 
+    type="email"
+    id="email"
+    class="form-control"
+    ngModel
+    name="email"
+    required
+    email
+  >
+...</textarea>
+    </code-block>
+  </p>
 
+  <p>
+    This sets the <code>valid</code> attribute on <code>NgForm</code>. Angular also adds some dynamic
+    classes to the inputs like <code>ng-dirty</code>, <code>ng-touched</code>, and <code>ng-invalid</code> 
+  </p>
 
+  <h3>
+    192. Built-in Validators & Using HTML5 Validation
+  </h3>
 
+  <p>
+    Which Validators do ship with Angular?
+  </p>
 
+  <p>
+    Check out the Validators class: <a href="https://angular.io/api/forms/Validators">https://angular.io/api/forms/Validators</a> 
+    - these are all built-in validators, 
+    though these are the methods which actually get executed (and which you later can add when using the reactive 
+    approach).
 
+  </p>
 
+  <p>
+    For the template-driven approach, you need the directives. You can find out their names, by searching for "validator" in the 
+    official docs: https://angular.io/api?type=directive - everything marked with "D" is a directive and can be added to your 
+    template.    
+  </p>
 
+  <p>
+    Additionally, you might also want to enable HTML5 validation (by default, Angular disables it). You can do so by adding the 
+    <code>ngNativeValidate</code>  to a control in your template.
+  </p>
 
+  <h3>
+    193. TD: Using the Form State
+  </h3>
+  
+  <p>
+    For instance we could set the submit button to <code>diabled</code> if the form is not valid. Note the
+    <code>f</code> is a local reference to the from within the template (<code>#f="NgForm"</code>)
+  </p>
 
+  <code-block language="html" label="Submit Btn Disabled Unless Valid Form" controls>
+<textarea>
+<button 
+  class="btn btn-primary"
+  type="submit"
+  [disabled]="!f.valid">
+    Submit
+</button></textarea>
+</code-block>
 
+<p>
+  We can also use the css styles to alert the user to something.For instance putting a red border if
+  the user touched the input and the input is invalid.
+</p>
 
+  <code-block language="css" label="app.component.css" controls>
+<text-area>input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}</text-area>
+  </code-block>
 
+<h3>
+  194. TD: Outputting Validation Error Messages
+</h3>
 
+<p>
+  The <code>#email='ngModel'</code> sets the <code>email</code> refrence so you can
+  use it within the tempalte.
+</p>
 
+<p>
+  <code-block language="html" label="Validation of Input with #email='ngModel' and *ngIf" controls>
+<textarea><div class="form-group">
+  <label for="email">Mail</label>
+  <input 
+    type="email"
+    id="email"
+    class="form-control"
+    ngModel
+    name="email"
+    required
+    email
+    #email="ngModel"
+  >
+</div>
+<span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid value.</span></textarea>
+    </code-block>
+  </p>
 
+  <h3>
+    195. TD: Set Default Values with ngModel Property Binding
+  </h3>
 
+  <p>
 
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_73.PNG" alt="capture_73">
+    </div>
+    <figcaption>Figure. App View</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_74.PNG" alt="capture_74">
+    </div>
+    <figcaption>Figure. TS Component </figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_75.PNG" alt="capture_75">
+    </div>
+    <figcaption>Figure. HTML Tempalte </figcaption>
+  </figure>
+
+  <h3>
+    196. TD: Using ngModel with Two-Way-Binding
+  </h3>
+
+  <p>
+    Right now everthing in the form only updates in <code>ngModel</code> once the form is
+    submitted.Then you get a form object where you can get retreve those values. You can also
+    use two-way binding to check values as they are entered.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_76.PNG" alt="capture_76">
+    </div>
+    <figcaption>Figure. App View </figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_77.PNG" alt="capture_77">
+    </div>
+    <figcaption>Figure. HTML Template </figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_78.PNG" alt="capture_78">
+    </div>
+    <figcaption>Figure. TS File </figcaption>
+  </figure>
+
+  <h3>
+    197. TD: Grouping Form Controls
+  </h3>
+
+  <p>
+    To group inputs together in a form you can use <code>ngModelGroup</code> that is set to a
+    key string name that will group all inputs of that group together.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_79.PNG" alt="capture_79">
+    </div>
+    <figcaption>Figure. FromGroup in ngModel</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_80.PNG" alt="capture_80">
+    </div>
+    <figcaption>Figure. #userData="ngModelGroup"</figcaption>
+  </figure>
+
+  <h3>
+    198. TD: Handling Radio Buttons
+  </h3>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_81.PNG" alt="capture_81">
+    </div>
+    <figcaption>Figure. App View</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_82.PNG" alt="capture_82">
+    </div>
+    <figcaption>Figure. app.component.ts</figcaption>
+  </figure>
+
+  <h3>
+    199. TD: Setting and Patching Form Values
+  </h3>
+
+  <p>
+    Implementing am input being populated once a button is clicked. One method that could
+    be useful is to use the <code>NgForm.setValue()</code> method where you pass in a javascript
+    object that exactly represents the data needed in your <code>NgForm </code>. This method 
+    could work but would overwrite the data in the other fields.
+  </p>
+
+  <p>
+    To just insert data into a single field we can use the <code>form.pathValue()</code> for the
+    form object.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_83.PNG" alt="capture_83">
+    </div>
+    <figcaption>Figure. app.component.html</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_84.PNG" alt="capture_84">
+    </div>
+    <figcaption>Figure. app.component.ts</figcaption>
+  </figure>
 
 
 
