@@ -29,15 +29,17 @@
       }
 
       .figure-image-div img {
-        margin: 20px 0 0 0;
-        padding: 0px;
         border: 1px #000000 solid;
-        max-height: 800px;
+        max-height: 1200px;
         max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 30px;
       }
 
       figcaption {
-        max-width: 600px;
+        max-width: 800px;
         font-style: italic;
         padding: 2px;
         text-align: center;
@@ -2208,12 +2210,121 @@ export class AppModule { ... }</textarea>
     <figcaption>Figure. app.component.ts</figcaption>
   </figure>
 
+  <h3>
+    200. TD: Using Form Data
+  </h3>
+
+  <p>
+    Can set component values to form entered values.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_85.PNG" alt="capture_85">
+    </div>
+    <figcaption>Figure. app.component.ts form values setting onSubmit()</figcaption>
+  </figure>
 
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_86.PNG" alt="capture_86">
+    </div>
+    <figcaption>Figure. app.component.html</figcaption>
+  </figure>
+
+  <h3>
+    201. TD: Resetting Forms
+  </h3>
+
+  <p>
+    To reset form data you can call <code>reset()</code> on the form. If you want to reset to specific values
+    then you can use the same object in <code>setValues()</code> to <code>reset()</code>.
+  </p>
+
+  <h3>
+    Assignment 6: Practicing Template-Driven Forms
+  </h3>
+
+  <p>
+    Add a Form with the following Inputs (and Validators) <br>
+      1) Mail address (should not be empty and should be an email address) <br>
+      2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
+        Set "Advanced" as Default<br>
+      3) A Password field (should not be empty) <br>
+      4) A Submit Button <br>
+  </p>
+
+  <p>
+      Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
+  </p>
+
+  <p>
+      Upon submitting the form, you should simply print the Value of the Form to the Console.
+      Optionally, display it in your template.
+  </p>
+
+  <h4 style="margin-top: 10px;">My Solution</h4>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_88.PNG" alt="capture_88">
+    </div>
+    <figcaption>Figure. Form Before Submit</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_89.PNG" alt="capture_89">
+    </div>
+    <figcaption>Figure. Form After Submit</figcaption>
+  </figure>
+
+  <code-block language="ts" label="app.component.ts" controls>
+<text-area>import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  @ViewChild('f') userForm: NgForm;
+
+  defaultSub = 'advanced';
+
+  submitted = false
+  user = {
+    email: "",
+    subscription: "",
+    password: "",
+  }
 
 
+  onSubmit(form: NgForm) {
+    console.log(form);
 
+    // Set Values On Page From Form
+    this.submitted = true;
+    this.user.email = this.userForm.value.email;
+    this.user.subscription = this.userForm.value.subscription;
+    this.user.password = this.userForm.value.password;
 
+    // Reset Form and Set Defaults for Subscription Type
+    this.userForm.onReset();
+    this.userForm.form.patchValue({subscription: this.defaultSub})
+  }
+}
+</text-area>
+  </code-block>
+  
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_90.PNG" alt="capture_90">
+    </div>
+    <figcaption>Figure. HTML Form</figcaption>
+  </figure>
 
 
 
