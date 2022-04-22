@@ -83,6 +83,10 @@
         background-color: #b1b1b1;
       };
 
+
+      code-block {
+        border: 1px solid black;
+      }
     </style>
 
     <!-- Javascript imports -->
@@ -150,6 +154,11 @@
       <li class="single-nav">
         <a href="#Section15">
           <span>Section 15<br>Handling Forms in Angular Apps</span>
+        </a>
+      </li>
+      <li class="single-nav">
+        <a href="#Section18">
+          <span>Section 18<br>Making Http Requests</span>
         </a>
       </li>
     </ul>
@@ -2325,6 +2334,180 @@ export class AppComponent {
     </div>
     <figcaption>Figure. HTML Form</figcaption>
   </figure>
+
+  <h2 id="Section18">
+    Section 18. Making Http Requests
+  </h2>
+
+  <h3>
+    253. How Does Angular Interact With Backends?
+  </h3>
+  
+  <p>
+    You do not connect angular directly to a database. You do not enter credentials into angular
+    since this would be highly insecure. You talk to a server by sending and receiving HTTP
+    requests from a server. For example an API that uses REST, GraphQL, etc. Can also
+    file uploads, analytics and other things. 
+  </p>
+
+  <h3>
+    254. The Anatomy of a Http Request
+  </h3>
+
+  <p>
+    The most important part an api is the URL (API Endpoint) and the Http Verb (POST, GET PUT, etc).
+    Other parts are Headers ( Metadata such as {"Content-Type": "application/json"} ) and sometimes
+    Body information with Http verbs such as POST, PUT, PATCH with data such as {title: "New Post"}.  
+  </p>
+
+  <h3>
+    255. Backend (Firebase) Setup
+  </h3>
+
+  <p>
+    Firebase is a whole backend solution that gives a RESTApi. We are going to create a realtime database
+    to store information to practice with calling API's.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_91.PNG" alt="capture_91">
+    </div>
+    <figcaption>Figure. Firebase Console View</figcaption>
+  </figure>
+
+  <h3>
+    256. Sending a POST Request
+  </h3>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_92.PNG" alt="capture_92">
+    </div>
+    <figcaption>Figure. Starting App View</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_93.PNG" alt="capture_93">
+    </div>
+    <figcaption>Figure. Starting app.component.html</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_94.PNG" alt="capture_94">
+    </div>
+    <figcaption>Figure. Starting app.component.ts</figcaption>
+  </figure>
+
+  <p>
+    In order to make a Http request within Angular we need to import a new angular
+    module. This is the <code>HttpClientModule</code> and we need to set that in the
+    <code>imports</code> of the <code>app.module.ts</code>. 
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_95.PNG" alt="capture_95">
+    </div>
+    <figcaption>Figure. Importing HttpClientModule</figcaption>
+  </figure>
+
+  <p>
+    The data that is send to the api endpoint needs to be in JSON format but Angular
+    takes a Javascript object and converts that into a json object.
+  </p>
+
+  <p>
+    Angular relies heavily on Observables and Http requests should the observables. Observables
+    are the perfect use case for Http requests. Angular forces the use of observables in this
+    case so you must subscribe. You do not have to manually unsubscribe since this is done
+    automatically.
+  </p>
+  
+  <p>
+    <span style="color: red;"><b>Important</b></span>: Http requests must be subscribed too.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_96.PNG" alt="capture_96">
+    </div>
+    <figcaption>Figure. Firebase View</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_97.PNG" alt="capture_97">
+    </div>
+    <figcaption>Figure. Http Request in Component</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_98.PNG" alt="capture_98">
+    </div>
+    <figcaption>Figure. Developer Tools View</figcaption>
+  </figure>
+
+  <h3>
+    257. GETting Data
+  </h3>
+
+  <p>
+    Now we will be getting back data with the <code>http.get()</code> method.We will needed
+    to transform the javascript object from the <code>http.get()</code> method to something
+    that we can use.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_99.PNG" alt="capture_99">
+    </div>
+    <figcaption>Figure. app.component.ts</figcaption>
+  </figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
