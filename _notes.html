@@ -2468,6 +2468,71 @@ export class AppComponent {
     <figcaption>Figure. app.component.ts</figcaption>
   </figure>
 
+  <h3>
+    Using RxJS Operators to Transform Response Data
+  </h3>
+
+  <p>
+    We can use observables operators to transform the data that we get from the observable. Using
+    observables operators allows for the transform process to be switch out easily or adjusted. This
+    also makes for leaner code with a clean subscribe function. 
+  </p>
+
+  <p>
+    Use can use <code>pipe()</code> function to conduct this transform. In this example we will use <code>map()</code>
+    inside of the <code>pipe()</code> function. Some additional notes. In order to push a new javascript object you
+    use the <code>{}</code>, in order to keep all the key value pairs we use the spread operator <code>...</code>, and the
+    <code>hasOwnProperty</code> is used to ensure you are access an object and not a prototype.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_100.PNG" alt="capture_100">
+    </div>
+    <figcaption>Figure. app.component.ts using pipe()</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_101.PNG" alt="capture_101">
+    </div>
+    <figcaption>Figure. Browser view</figcaption>
+  </figure>
+
+  <h3>
+    259. Using Types with the HttpClient
+  </h3>
+
+  <p>
+    We will insert the types for the previous request using a <code>post.model.ts</code> interface class with the known
+    formate that we are looking for.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_102.PNG" alt="capture_102">
+    </div>
+    <figcaption>Figure. post.model.ts</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_103.PNG" alt="capture_103">
+    </div>
+    <figcaption>Figure. Use of type in app.component.ts</figcaption>
+  </figure>
+
+  <p>
+    Can also move the type to the return of the <code>.get</code> method like in the figure below.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_104.PNG" alt="capture_104">
+    </div>
+    <figcaption>Figure. Use of type in .get method</figcaption>
+  </figure>
+
 
 
 
