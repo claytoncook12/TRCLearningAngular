@@ -2523,7 +2523,8 @@ export class AppComponent {
   </figure>
 
   <p>
-    Can also move the type to the return of the <code>.get</code> method like in the figure below.
+    Can also move the type to the return of the <code>.get</code> method like in the figure below. Additionally,
+    the same works for <code>.post</code> as well.
   </p>
 
   <figure>
@@ -2531,6 +2532,98 @@ export class AppComponent {
       <img src="static\images\capture_104.PNG" alt="capture_104">
     </div>
     <figcaption>Figure. Use of type in .get method</figcaption>
+  </figure>
+
+  <h3>
+    260. Outputting Posts
+  </h3>
+
+  <p>
+    We can output the <code>posts</code> within the subscribe button by setting the classes
+    <code>loadedPosts</code> array to the returned data. Then we use <code>*ngIf</code> and
+    <code>*ngFor</code> within the template to display the fetched data.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_105.PNG" alt="capture_105">
+    </div>
+    <figcaption>Figure. Set post data in class</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_106.PNG" alt="capture_106">
+    </div>
+    <figcaption>Figure. Html Template</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_107.PNG" alt="capture_107">
+    </div>
+    <figcaption>Figure. App view</figcaption>
+  </figure>
+
+  <h3>
+    261. Showing a Loading Indicator
+  </h3>
+
+  <p>
+    For a loading indication it can be use with a <code>isFetching</code> variable.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_108.PNG" alt="capture_108">
+    </div>
+    <figcaption>Figure. Template</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_109.PNG" alt="capture_109">
+    </div>
+    <figcaption>Figure. Loading Logic in Component</figcaption>
+  </figure>
+
+  <h3>
+    262. Using a Service for Http Requests<br>
+    &<br>
+    263. Services & Components Working Together
+  </h3>
+
+  <p>
+    Right now we transform the data within the component. So we will go through
+    adding those transformations to within a service. this way the component is mostly
+    related with template work. So we will create a <code>post.service.ts</code>.In this
+    service we want to move the methods that do the http requests. 
+  </p>
+
+  <p>
+    When we move the post requests though we have an issue with the <code>isFetching</code> and
+    <code>loadedPosts</code>. So we need to fix the connection between these objects and the component
+    that was displaying that data.
+  </p>
+
+  <p>
+    So the solution to this is to return the observable and then subscribe within the component itself. Now
+    we have moved the logic for transforming the data into the service and keep the <code>subscribe</code>
+    call within the component itself. 
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_110.PNG" alt="capture_110">
+    </div>
+    <figcaption>Figure. post.service.ts</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_111.PNG" alt="capture_111">
+    </div>
+    <figcaption>Figure. app.component.ts</figcaption>
   </figure>
 
 
