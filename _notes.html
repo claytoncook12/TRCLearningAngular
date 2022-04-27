@@ -2607,9 +2607,12 @@ export class AppComponent {
   </p>
 
   <p>
+    <span style="color: red;"><b>Important</b></span>:<br>
     So the solution to this is to return the observable and then subscribe within the component itself. Now
     we have moved the logic for transforming the data into the service and keep the <code>subscribe</code>
-    call within the component itself. 
+    call within the component itself. this allows for the look of the component to be within the component
+    and the data manipulation to be in the service. Additionally, if the component cares about the response
+    then move the <code>subscribe</code> call to within the component.
   </p>
 
   <figure>
@@ -2626,10 +2629,76 @@ export class AppComponent {
     <figcaption>Figure. app.component.ts</figcaption>
   </figure>
 
+  <h3>
+    264. Sending a DELETE Request
+  </h3>
 
+  <p>
+    We put the delete call into the <code>posts.service.ts</code> and then call that from
+    within the component.
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_112.PNG" alt="capture_112">
+    </div>
+    <figcaption>Figure. deleteAllPosts() in posts.service.ts</figcaption>
+  </figure>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_113.PNG" alt="capture_113">
+    </div>
+    <figcaption>Figure. reset loadedPosts in app.component.ts</figcaption>
+  </figure>
 
+  <h3>
+    265. Handling Errors
+  </h3>
+
+  <p>
+    There are dozens of error that can occur when you call an api; server down, wrong data,
+    time outs, etc. We need to be able to handle those errors gracefully. We can return error
+    messages as the second argument inside of the <code>subscribe</code> function and return
+    that to the user. Some useful parameters are status and error. The next section has another
+    method of handling errors.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_114.PNG" alt="capture_114">
+    </div>
+    <figcaption>Figure. Angular Firebase Settings for Access</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_115.PNG" alt="capture_115">
+    </div>
+    <figcaption>Figure. Error in App</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_116.PNG" alt="capture_116">
+    </div>
+    <figcaption>Figure. app.component.ts error handling</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_117.PNG" alt="capture_117">
+    </div>
+    <figcaption>Figure. app.component.html error handling</figcaption>
+  </figure>
+
+  <h3>
+    266. Using Subjects for Error Handling
+  </h3>
+
+  <p>
+    
+  </p>
 
 
 
