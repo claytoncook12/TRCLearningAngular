@@ -28,6 +28,11 @@
         padding: 0px;
       }
 
+      .figure-image-div {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
       .figure-image-div img {
         border: 1px #000000 solid;
         max-height: 1200px;
@@ -86,6 +91,13 @@
 
       code-block {
         border: 1px solid black;
+      }
+
+      blockquote {
+        background: rgb(215, 215, 215);
+        padding: 20px 5px 20px 5px;
+        margin: 10px;
+        font-style: italic;
       }
     </style>
 
@@ -2697,10 +2709,60 @@ export class AppComponent {
   </h3>
 
   <p>
+    A definition of a <code>Subject</code> from the rxjs docs. 
     
+    <blockquote cite="https://rxjs.dev/guide/subject">
+      "A Subject is like an Observable, but can multicast to many Observers.
+      Subjects are like EventEmitters: they maintain a registry of many listeners."
+    </blockquote>
+
+    <blockquote cite="https://rxjs.dev/guide/subject">
+      "Every Subject is an Observer. It is an object with the methods <code>next(v)</code>,
+      <code>error(e)</code>, and <code>complete()</code>. To feed a new value to the <code>Subject</code>,
+      just call <code>next(theValue)</code>, and it will be multicasted to the Observers registered to 
+      listen to the Subject."
+    </blockquote>
   </p>
 
+  <p>
+    This method of error handling could be useful if you send data to a api but
+    don't subscribe to the response in the component. For example in the <code>onCreatePost()</code> 
+    we are not subscribing to the response. We can use a <span style="color: red;"><b>Subject</b></span>.
+  </p>
 
+  <p>
+    Within the <code>posts.service.ts</code> we can use the <code>Subject</code> from <code>rxjs</code> to provide
+    a nice error response to the app component.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_118.PNG" alt="capture_118">
+    </div>
+    <figcaption>Figure. Subject error handling</figcaption>
+  </figure>
+
+  <p>
+    Now we can subscribe to that <code>Subject</code> in places that needed to be subscribed. We also need to
+    add a few house cleaning items. It is good practice to unsubscribe when the component is destroyed. With
+    this is mind we will add a <code>private</code> <code>Subscription</code> class from <code>rxjs</code>
+    and use it to subscribe and unsubscribe.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_119.PNG" alt="capture_119">
+    </div>
+    <figcaption>Figure. Subscribing and Unsubscribing to the <code>Subject</code></figcaption>
+  </figure>
+
+  <h3>
+    267. Using the catchError Operator
+  </h3>
+
+  <p>
+
+  </p>
 
 
 
