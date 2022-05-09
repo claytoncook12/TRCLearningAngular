@@ -2858,10 +2858,75 @@ export class AppComponent {
     <figcaption>Figure. <code>HttpClient</code> options</figcaption>
   </figure>
 
+  <h3>
+    273. Introducing Interceptors
+  </h3>
 
+  <p>
+    Can use <code>Interceptors</code> to modify multiple responses. Once setup the 
+    <code>auth-interceptor.service.ts</code> and register it with the
+    <code>app.module.ts</code> all out going responses will then run the
+    code with the interceptor.
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_128.PNG" alt="capture_128">
+    </div>
+    <figcaption>Figure. auth-interceptor.service.ts</figcaption>
+  </figure>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_129.PNG" alt="capture_129">
+    </div>
+    <figcaption>Figure. app.module.ts settings</figcaption>
+  </figure>
 
+  <h3>
+    274. Manipulating Request Objects
+  </h3>
+
+  <p>
+    The request object is immutable so you need to create a new object to 
+    modify any information in the request object.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_130.PNG" alt="capture_130">
+    </div>
+    <figcaption>Figure. Modifying <code>HttpRequest</code> Object</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_131.PNG" alt="capture_131">
+    </div>
+    <figcaption>Figure. Modified <code>HttpRequest</code> Header</figcaption>
+  </figure>
+
+  <h3>
+    275. Response Interceptors
+  </h3>
+
+  <p>
+    Can also interact with the response from an <code>HttpRequest</code>.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_132.PNG" alt="capture_132">
+    </div>
+    <figcaption>Figure. Executing Code from <code>HttpEventType.Response</code></figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_133.PNG" alt="capture_133">
+    </div>
+    <figcaption>Figure. Browser View</figcaption>
+  </figure>
 
 
 
