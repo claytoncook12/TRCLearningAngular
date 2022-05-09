@@ -2761,22 +2761,102 @@ export class AppComponent {
   </h3>
 
   <p>
+    You can use a special error handler from <code>rxjs</code> that is called <code>catchError</code>.
+    Could use this to submit error data to an external service for monitoring and <code>throwError</code>
+    is used to base on the error as an observable.
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_120.PNG" alt="capture_120">
+    </div>
+    <figcaption>Figure. Using <code>catchError</code> and <code>throwError</code></figcaption>
+  </figure>
+
+  <h3>
+    268. Error Handling & UX
+  </h3>
+
+  <p>
+    Will use <code>onHandleError()</code> to allow for the error message to be toggles off.
+  </p>
+  
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_121.PNG" alt="capture_121">
+    </div>
+    <figcaption>Figure. UX Example for Error Handling</figcaption>
+  </figure>
+
+  <h3>
+    269. Setting Headers
+  </h3>
+
+  <p>
+    We will be setting the headers withing the <code>posts.service.ts</code>. We can set headers
+    on any http method. The last input is where this header information can be set.
   </p>
 
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_122.PNG" alt="capture_122">
+    </div>
+    <figcaption>Figure. Setting Custom Headers</figcaption>
+  </figure>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_123.PNG" alt="capture_123">
+    </div>
+    <figcaption>Figure. Header On Request</figcaption>
+  </figure>
 
+  <h3>
+    270. Adding Query Params
+  </h3>
 
+  <p>
+    We can use the <code>HttpParams</code> object from <code>rxjs</code> to pass query parameters to
+    the api. This is a bit more manageable with many parameters.
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_124.PNG" alt="capture_124">
+    </div>
+    <figcaption>Figure. Adding Query Parameters with <code>HttpParams()</code></figcaption>
+  </figure>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_125.PNG" alt="capture_125">
+    </div>
+    <figcaption>Figure. New Pretty Response from Firebase</figcaption>
+  </figure>
 
+  <h3>
+    271. Observing Different Types of Responses
+  </h3>
 
+  <p>
+    So times you need more in detail information from the response. We can ask for the 
+    full response with an extra argument in the HttpClient.
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_126.PNG" alt="capture_126">
+    </div>
+    <figcaption>Figure. Using observe keyword in <code>HttpClient</code></figcaption>
+  </figure>
 
-
-
-
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_127.PNG" alt="capture_127">
+    </div>
+    <figcaption>Figure. <code>HttpClient</code> options</figcaption>
+  </figure>
 
 
 
