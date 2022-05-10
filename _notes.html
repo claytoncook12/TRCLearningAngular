@@ -173,7 +173,11 @@
           <span>Section 18<br>Making Http Requests</span>
         </a>
       </li>
-      
+      <li class="single-nav">
+        <a href="#Section19">
+          <span>Section 19<br>Course Project - HTTP</span>
+        </a>
+      </li>
     </ul>
   </div>
 
@@ -2974,9 +2978,83 @@ export class AppComponent {
     like this one. This is how you generally work with HTTP requests.
   </p>
 
+  <h2 id="Section19">
+    Section 19. Course Project - HTTP
+  </h2>
 
+  <h3>
+    280. thru 284.
+  </h3>
+  <h5>
+    (Named it ng-course-recipe-book)
+  </h5>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_137.PNG" alt="capture_137">
+    </div>
+    <figcaption>Figure. Firebase Database</figcaption>
+  </figure>
 
+  <p>
+    We setup the firebase connection within the <code>data-storage.service.ts</code> file.
+  </p>
+
+  <code-block language="ts" label="data-storage.service.ts" controls>
+<text-area>import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+import { Recipe } from '../recipes/recipe.model';
+import { RecipeService } from '../recipes/recipe.service';
+
+@Injectable({ providedIn: 'root' })
+export class DataStorageService {
+  constructor(private http: HttpClient, private recipeService: RecipeService) {}
+
+  firebaseUrl:string = "https://ng-course-recipe-book-61906-default-rtdb.firebaseio.com/";
+
+  storeRecipes() {
+    const recipes = this.recipeService.getRecipes();
+    this.http
+      .put(
+        this.firebaseUrl + 'recipes.json',
+        recipes
+      )
+      .subscribe(response => {
+        console.log(response);
+      });
+  }
+
+  fetchRecipes() {
+    this.http
+      .get<Recipe[]>(
+        this.firebaseUrl + 'recipes.json'
+      )
+      .pipe(
+        map(recipes => {
+          return recipes.map(recipe => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : []
+            };
+          });
+        })
+      )
+      .subscribe(recipes => {
+        this.recipeService.setRecipes(recipes);
+      });
+  }
+}
+</textarea>
+</code-block>
+
+<figure>
+  <div class="figure-image-div">
+    <img src="static\images\capture_138.PNG" alt="capture_138">
+  </div>
+  <figcaption>Figure. App View</figcaption>
+</figure>
 
 
 
