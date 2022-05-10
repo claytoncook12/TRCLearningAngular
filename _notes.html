@@ -173,6 +173,7 @@
           <span>Section 18<br>Making Http Requests</span>
         </a>
       </li>
+      
     </ul>
   </div>
 
@@ -2928,8 +2929,50 @@ export class AppComponent {
     <figcaption>Figure. Browser View</figcaption>
   </figure>
 
+  <h3>
+    276. Multiple Interceptors
+  </h3>
 
+  <p>
+    We are going to chain two interceptors together. We make a new <code>logging-interceptor.service.ts</code>
+    that logs some information. Then we chain those two together within <code>app.module.ts</code>.
+  </p>
 
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_134.PNG" alt="capture_134">
+    </div>
+    <figcaption>Figure. <code>logging-interceptor.service.ts</code></figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_135.PNG" alt="capture_135">
+    </div>
+    <figcaption>Figure. <code>app.module.ts</code></figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_136.PNG" alt="capture_136">
+    </div>
+    <figcaption>Figure. Response Log</figcaption>
+  </figure>
+
+  <h3>
+    277. Wrap Up
+  </h3>
+
+  <p>
+    You should feel confident about using HTTP requests. Always remember that these methods, like get and post give you back an
+    <span style="color: red;"><b>observable</b></span> to which you have to subscribe to actually kick of the request
+    and to send it. Since it is an observable, you can use <span style="color: red;"><b>operators</b></span>,
+    rxjs/operators to transform the data, log data, catch
+    errors or whatever you want to do but ultimately, you need to subscribe and you can do this in a service
+    or in a component depending on where you need to work with the response and in the subscribe method,
+    you pass in a function to handle the data you get back and possibly also an error handling function,
+    like this one. This is how you generally work with HTTP requests.
+  </p>
 
 
 
