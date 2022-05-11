@@ -80,8 +80,13 @@
         border-collapse: collapse;
         margin: auto;
         text-align: center;
-        max-width: 1200px;
         padding: 5px;
+      }
+
+      table {
+        max-width: 800px;
+        margin-top: 5px;
+        margin-bottom: 5px;
       }
 
       tr:nth-child(even) {
@@ -176,6 +181,14 @@
       <li class="single-nav">
         <a href="#Section19">
           <span>Section 19<br>Course Project - HTTP</span>
+        </a>
+      </li>
+      <li class="single-nav">
+        <a href="#Section28">
+          <span>
+            Section 28<br>A Basic Introduction to unit
+            Testing in Angular Apps
+          </span>
         </a>
       </li>
     </ul>
@@ -3055,6 +3068,238 @@ export class DataStorageService {
   </div>
   <figcaption>Figure. App View</figcaption>
 </figure>
+
+<h3>
+  285. Resolving Data Before Loading
+</h3>
+
+<p>
+  Need to Finished Section
+</p>
+
+<h2 id="Section28">
+  A Basic Introduction to Unit Testing in Angular Apps
+</h2>
+
+<h3>
+  421. About this Section
+</h3>
+
+<p>
+  This Section only provides an Introduction to Unit Testing an Angular 2+ App.
+</p>
+
+<p>
+  It's NOT a detailed Guide about that neither is it a detailed Introduction to Unit
+  Testing in general. Check out the "Further Resources" (last Lecture in this Module)
+  to dive deeper into these topics.
+</p>
+
+<h3>
+  423. Why Unit Tests?
+</h3>
+
+<p>
+  Unit tests allow us to answer questions about the components that are created. Such as
+  those in the table below.
+</p>
+
+<table>
+  <tr>
+    <th>Component</th>
+    <th>Component Question</th>
+  </tr>
+  <tr>
+    <td>
+      <b>UserComponent</b><br>
+      <code>[user]="selectUser"</code>
+    </td>
+    <td>
+      Does the Component work as intended?<br>
+      Does the Input work as intended from UserComponent
+      to UserDetailComponent?
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>UserDetailComponent</b><br>
+      <code>@Input() user;</code>
+    </td>
+    <td>Does the Component work as intended?</td>
+  </tr>
+  <tr>
+    <td>
+      <b>ReversePipe</b><br>
+    </td>
+    <td>Does the Component work as intended?</td>
+  </tr>
+  <tr>
+    <td>
+      <b>UserService</b><br>
+    </td>
+    <td>
+      Does the Component work as intended?<br>
+      Does the Inject from UserService to UserDetailComponent
+      work?
+    </td>
+  </tr>
+</table>
+
+<div 
+  style="
+    border: solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px 5px 5px 5px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  "
+>
+  <p>
+    <b>Benefits of Unit Testing</b>
+  </p>
+  <ol style="margin-left: 30px;">
+    <li>Guard Against Breaking Changes</li>
+    <li>Analyze Code Behavior (Expected and Unexpected)</li>
+    <li>reveal Design Mistakes</li>
+  </ol>
+</div>
+
+<h3>
+  424. Analyzing the Testing Setup (as created by the CLI)
+</h3>
+
+<p>
+  How should a test work? It should be a logical flow of how the 
+  code will be run. So we need to bootstrap our application → setup
+  the app module → run test tasks that the user might do or see. We will see
+  how this is done in Angular. <b>Karma</b> is the default package that runs
+  these tests.
+</p>
+
+<div
+style="
+margin:auto;
+text-align: center;
+text-decoration: underline;
+"
+>
+  <b>
+    Some Testing Functions and Description
+  </b>
+</div>
+
+<table>
+  <tr>
+    <th>
+      Testing<br>
+      Function/Object/Code SnipIt
+    </th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>
+      <code>beforeEach</code>
+    </td>
+    <td>
+      This sets up the configuration that is completed before each test.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>it()</code>
+    </td>
+    <td>
+      An individual test that is run to test a single aspect of the component.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>TestBed</code>
+    </td>
+    <td>
+      Main Angular 2 testing utility object. So this is the testing environment. This does not
+      have the <code>imports</code>, <code>providers</code>, or <code>bootstrap</code> properties that
+      can be included with the <code>@NgModel</code> angular class decorator. This is because we are
+      focusing on the app component.
+    </td>
+  </tr>  
+  <tr>
+    <td>
+      <code>let fixture = testBed.createComponent(AppComponent)</code>
+    </td>
+    <td>
+      This is the component (called <code>fixture</code>) that is being tested and is created within
+      the <code>testBed</code>.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>fixture.detectChanges()</code>
+    </td>
+    <td>
+      This is a function to update the fixture to detect any changes. this has to be done because we are
+      not running an actual browser.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>let compiled = fixture.debugElement.nativeElement</code>
+    </td>
+    <td>
+      This <code>compiled</code> object is now a normal document object model and be interacted with as such.
+    </td>
+  </tr> 
+</table>
+
+<figure>
+  <div class="figure-image-div">
+    <img src="static\images\capture_139.PNG" alt="capture_139">
+  </div>
+  <figcaption>Figure. Default <code>app.component.spec.ts</code></figcaption>
+</figure>
+
+<h3>
+  425. Running Tests (with the CLI)
+</h3>
+
+<p>
+  Can run the testing suite by running the command <code>ng test</code> within the
+  project folder. This will open a browser that shows the results. Additional option
+  is <code>--code-coverage</code> that let you know the amount of code that has been
+  tested.
+</p>
+
+<figure>
+  <div class="figure-image-div">
+    <img src="static\images\capture_140.PNG" alt="capture_140">
+  </div>
+  <figcaption>Figure. Karma Browser and Terminal View</figcaption>
+</figure>
+
+<h3>
+  426. Adding a Component and Some Fitting Tests
+</h3>
+
+<p>
+  
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
