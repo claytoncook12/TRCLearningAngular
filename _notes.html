@@ -2365,6 +2365,190 @@ export class AppComponent {
     <figcaption>Figure. HTML Form</figcaption>
   </figure>
 
+  <h3>
+    202. Introduction to the Reactive Approach
+  </h3>
+
+  <p>
+    <span style="color: red;"><b>Reactive</b></span> forms are were you programmatically create the form and then
+    synchronize it with the DOM.
+  </p>
+
+  <h3>
+    203. Reactive: Setup
+  </h3>
+
+  <p>
+    Starting Place for web app files and app view.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_143.PNG" alt="capture_143">
+    </div>
+    <figcaption>Figure. App View</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_144.PNG" alt="capture_144">
+    </div>
+    <figcaption>Figure. Start HTML</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_145.PNG" alt="capture_145">
+    </div>
+    <figcaption>Figure. Start TS Files</figcaption>
+  </figure>
+
+  <p>
+    Now we will at the form that we will interact with inside the <code>TS</code> file. In
+    Angular a form is just a group of controls. To contain all these controls we can use
+    a <code>FormGroup</code> inside of components <code>TS</code> file. In order to use this
+    we also need to import the <code>ReactiveFormsModule</code> in <code>app.module.ts</code>
+    file.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_146.PNG" alt="capture_146">
+    </div>
+    <figcaption>Figure. Needed <code>ReactiveFormsModule</code> in <code>app.module.ts</code></figcaption>
+  </figure>
+
+  <h3>
+    204. Reactive: Creating a Form in Code
+  </h3>
+
+  <p>
+    You should initialize your form before you render your form. Use a life cycle hook that is called before
+    it is rendered. We will be initializing the form within the <code>ngOnInit</code> so that our code is
+    a little cleaner at the top.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_147.PNG" alt="capture_147">
+    </div>
+    <figcaption>Figure. Adding <code>FormControl</code> to <code>FormGroup</code></figcaption>
+  </figure>
+
+  <p>
+    Next we will tie the <code>signupForm</code> to the html template.
+  </p>
+
+  <h3>
+    205. Reactive: Syncing HTML and Form
+  </h3>
+
+  <p>
+    We will add some directives to point the html code to the <code>signupForm</code> in the <code>TS</code> file.
+    Now our html form and our TS form will be in sync.
+  </p>
+
+  <table>
+    <tr>
+      <th>HTML Directive with Property Binding</th>
+      <th>Meaning</th>
+    </tr>
+    <tr>
+      <td>
+        <code>&lt;form [formGroup]="signupForm" &gt;</code>
+      </td>
+      <td>
+        Use the form group that I have already created, don't create one.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>&lt;input formControlName="username" &gt;</code>
+      </td>
+      <td>
+        Tie the input value here to the <code>"username"</code> <code>FormControl()</code> object within
+        the <code>TS</code> file.
+      </td>
+    </tr>
+  </table>
+
+  <h3>
+    206. Reactive: Submitting the Form
+  </h3>
+
+  <p>
+    We still add the <code>(ngSubmit)="onSubmit()"</code> to the form as in the template driven form. Now
+    we don't need to pass in a local reference to the form but can use the form with the TS
+    file.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_148.PNG" alt="capture_148">
+    </div>
+    <figcaption>Figure. Adding <code>(ngSubmit)="onSubmit()"</code> to <code>&lt;form&gt;</code></figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_149.PNG" alt="capture_149">
+    </div>
+    <figcaption>Figure. <code>console.log(signupForm)</code></figcaption>
+  </figure>
+
+  <h3>
+    207. Reactive: Adding Validation
+  </h3>
+
+  <p>
+    Within the reactive approach all the configuration is being done with the TS file. So we will
+    configure the validation with the <code>FormControl</code> class. We will need an additional
+    class, <code>Validators</code> from <code>'@angular/forms'</code>.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_151.PNG" alt="capture_151">
+    </div>
+    <figcaption>Figure. <code>Validators</code></figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_150.PNG" alt="capture_150">
+    </div>
+    <figcaption>Figure. Change of <code>&lt;input class=""&gt;</code> set values based on validation</figcaption>
+  </figure>
+
+  <h3>
+    208. Reactive: Getting Access to Controls
+  </h3>
+
+  <p>
+    Can use the <code>signupForm.get()</code> helper method.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_152.PNG" alt="capture_152">
+    </div>
+    <figcaption>Figure. Accessing Controls in HTML Template</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_153.PNG" alt="capture_153">
+    </div>
+    <figcaption>Figure. Whole Form Check in Template</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_154.PNG" alt="capture_154">
+    </div>
+    <figcaption>Figure. CSS Styles with added ng classes for form</figcaption>
+  </figure>
+
   <h2 id="Section18">
     Section 18. Making Http Requests
   </h2>
