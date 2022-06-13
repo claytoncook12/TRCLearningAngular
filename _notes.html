@@ -182,11 +182,15 @@
         <a href="#Section19">
           <span>Section 19<br>Course Project - HTTP</span>
         </a>
+      </li>      <li class="single-nav">
+        <a href="#Section23">
+          <span>Section 23<br>Deploying an Angular App</span>
+        </a>
       </li>
       <li class="single-nav">
-        <a href="#Section28">
+        <a href="#Section29">
           <span>
-            Section 28<br>A Basic Introduction to unit
+            Section 29<br>A Basic Introduction to unit
             Testing in Angular Apps
           </span>
         </a>
@@ -3261,7 +3265,61 @@ export class DataStorageService {
   Need to Finished Section
 </p>
 
-<h2 id="Section28">
+<h2 id="Section23">
+  Deploying an Angular App
+</h2>
+
+<h3>
+  341. Deployment Preparation & Steps
+</h3>
+
+<p>
+  <span
+    style="text-decoration: underline;"
+  >
+    Deployment Steps
+  </span>
+  <ol style = "margin-left: 30px;">
+    <li>Use & Check Environment Variables</li>
+    <li>Polish & Test Code (See Angular Modules & Optimizing Section)</li>
+    <li>Run CMD <code>ng build --prod</code> (Uses ahead-of-time compilation)</li>
+    <li>
+      Deploy build artifacts (generated files) to static host (Since when
+      compiled the files are only HTML, JS, and CSS
+    </li>
+  </ol>
+</p>
+
+<h3>
+  342. Using Environment Variables
+</h3>
+
+<p>
+  The environment variables are stored in the <code>src/environments</code> folder. These hold different
+  key value pairs to set for production. When using the Firebase service you can store the Firebase API
+  key within this variables.
+</p>
+
+<code-block language="ts" label="Example in `src/environments/environment.prod.ts`" controls>
+<text-area>export const environment = {
+  production: true,
+  firebaseAPIKey: 'AIzaSyDb0xTaRAoxyCgvaDF3kk5VYOsTwB_3o7Y'
+};</text-area>
+</code-block>
+
+<p>
+  Then with the environment variable set you can insert those into the <code>auth.service.ts</code>. With this
+  setup then the environment variables will be updated between local and production.
+</p>
+
+<figure>
+  <div class="figure-image-div">
+    <img src="static\images\capture_155.PNG" alt="capture_155">
+  </div>
+  <figcaption>Figure. Use of Environment Variables in <code>auth.service.ts</code></figcaption>
+</figure>
+
+<h2 id="Section29">
   A Basic Introduction to Unit Testing in Angular Apps
 </h2>
 
@@ -3347,7 +3405,7 @@ export class DataStorageService {
   <ol style="margin-left: 30px;">
     <li>Guard Against Breaking Changes</li>
     <li>Analyze Code Behavior (Expected and Unexpected)</li>
-    <li>reveal Design Mistakes</li>
+    <li>Reveal Design Mistakes</li>
   </ol>
 </div>
 
