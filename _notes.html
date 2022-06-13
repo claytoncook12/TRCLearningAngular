@@ -3319,6 +3319,47 @@ export class DataStorageService {
   <figcaption>Figure. Use of Environment Variables in <code>auth.service.ts</code></figcaption>
 </figure>
 
+<h3>
+  343. Deployment Example: Firebase Hosting
+</h3>
+
+<p>
+  The command that builds for production is <code>ng build --prod</code>. Once you run this code the Angular
+  project is compiled into the <code>dist</code> folder. (<code>dist</code> is just the default folder)
+</p>
+
+<figure>
+  <div class="figure-image-div">
+    <img src="static\images\capture_156.PNG" alt="capture_156">
+  </div>
+  <figcaption>Figure. Files in <code>dist</code> folder</figcaption>
+</figure>
+
+<p>
+  Commands to Deploy to Firebase
+</p>
+
+<code-block language="" label="Commands to Deploy to Firebase" controls>
+<text-area>npm install -g firebase-tools
+firebase login
+firebase init #initialize firebase project
+# Select option for hosting
+# Select project to connect
+# Select public directory that contains file to deploy (dist/ng-complete-guide-update) 
+# Select single-page app option
+# Existing html should not be overwritten
+firebase deploy # deploy content of folder to deploy</text-area>
+</code-block>
+
+<h3>
+  344. Server Routing vs Browser Routing
+</h3>
+
+<p>
+  When deploying your Angular app, it's really important to make sure that your server (like S3)
+  is configured to always serve the index.html file.
+</p>
+
 <h2 id="Section29">
   A Basic Introduction to Unit Testing in Angular Apps
 </h2>
