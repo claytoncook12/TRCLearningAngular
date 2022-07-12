@@ -159,6 +159,11 @@
         </a>
       </li>
       <li class="single-nav">
+        <a href="#Section5">
+          <span>Section 5<br>Components & Databinding Deep Dive</span>
+        </a>
+      </li>
+      <li class="single-nav">
         <a href="#Section9">
           <span>Section 9<br>Using Services & Dependency Injection</span>
         </a>
@@ -1358,6 +1363,149 @@ export class Ingredient {
       <img src="static\images\capture_46.PNG" alt="capture_46">
     </div>
     <figcaption>Figure. TS files in Webpack for Developing</figcaption>
+  </figure>
+
+  <h2 id="Section5">
+    Section 5. Components & Databinding Deep Dive
+  </h2>
+
+  <h3>
+    64. Module Introduction
+  </h3>
+
+  <p>
+    We will look at a link data binding and components.
+  </p>
+
+  <h3>
+    65. Splitting Apps into Components
+  </h3>
+
+  <p>
+    Current state of app.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_157.PNG" alt="capture_157">
+    </div>
+    <figcaption>Figure. App View</figcaption>
+  </figure>
+
+  <p>
+    We will be splitting up our app into components so that there is less code per
+    component. So the components are:
+  </p>
+
+  <table>
+    <tr>
+      <th>Component</th>
+      <th>Desc.</th>
+    </tr>
+    <tr>
+      <td>cockpit</td>
+      <td>main control component</td>
+    </tr>
+    <tr>
+      <td>server-element</td>
+      <td>generic server element</td>
+    </tr>
+  </table>
+
+  <h3>
+    66. Property & Event Binding
+  </h3>
+
+  <p>
+    We will need to pass data between components. We do this by <span style="color: red;"><b>using custom properties and
+    events for our components.</b></span>.
+  </p>
+
+  <h3>
+    67. Binding to Custom Properties
+  </h3>
+
+  <p>
+    We can use property binding to bind to custom properties in our component. If you want to have a property
+    that is "bindable" to an outside parent component then you need to add the decorator <code>@Input()</code>.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_158.PNG" alt="capture_158">
+    </div>
+    <figcaption>Figure. Adding <code>@Input()</code> to Component</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_159.PNG" alt="capture_159">
+    </div>
+    <figcaption>Figure. Test Array in <code>app.component.ts</code></figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_160.PNG" alt="capture_160">
+    </div>
+    <figcaption>Figure. Using Custom Component Property</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_161.PNG" alt="capture_161">
+    </div>
+    <figcaption>Figure. App view</figcaption>
+  </figure>
+
+  <h3>
+    68. Assigning an Alias to Custom Properties
+  </h3>
+
+  <p>
+    If you want to use a variable name outside the component that is not the same as inside the
+    the component then you will use an alias.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_162.PNG" alt="capture_162">
+    </div>
+    <figcaption>Figure. Alias in HTML file</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_163.PNG" alt="capture_163">
+    </div>
+    <figcaption>Figure. Definition of Alias in <code>Input()</code></figcaption>
+  </figure>
+
+  <h3>
+    69. Binding to Custom Events
+  </h3>
+
+  <p>
+    We are going to use a custom event to inform the <code>app.component.ts</code> that an event has happened
+    within the <code>cockpit.component.ts</code>. This involves adding new
+    Angular generic objects called <code>EventEmitter</code>. Don't forget to add the <code>()</code>
+    at the end to call the constructor of the object. Additionally, you need to add the <code>@Output()</code>
+    decorator to the <code>EventEmitter</code> so that it can be accessed by the parent component.
+  </p>
+
+  <p>
+    General flow for data from child component to parent component. Child event (ex: (click)) that triggers child function &#8594;
+    Child function is an <code>EventEmitter</code> that passes on data using <code>.emit()</code> to parent component &#8594;
+    Parent html has an event listener (ex: <code>(childFunction)="parentFunction($event)"</code>) that triggers parent function
+    from event emitted by child function &#8594; The parent component function does operation within ts file of parent
+    component.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_164.PNG" alt="capture_164">
+    </div>
+    <figcaption>Custom Events for Components</figcaption>
   </figure>
 
   <h2 id="Section9">
