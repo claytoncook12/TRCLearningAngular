@@ -1508,6 +1508,177 @@ export class Ingredient {
     <figcaption>Custom Events for Components</figcaption>
   </figure>
 
+  <h3>
+    70. Assigning an Alias to Custom Events
+  </h3>
+
+  <p>
+    We can use the syntax <code>@Output('alias')</code> to assign an alias for the custom event
+    of a component from outside the component.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_165.PNG" alt="capture_165">
+    </div>
+    <figcaption>Alias for Custom Event in Child Component</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_166.PNG" alt="capture_166">
+    </div>
+    <figcaption>Using Alias From Parent Component</figcaption>
+  </figure>
+
+  <h3>
+    71. Custom Property and Event Binding Summary
+  </h3>
+
+  <p>
+    This process of allowing a parent and child component to pass data and events back and
+    forth is very important. The two decorators that accomplish this are <code>@Input()</code>
+    and <code>@Output()</code>.
+  </p>
+
+  <p>
+    One limit to keep in mind is what is there needs to be a long chain of data passing to get
+    information or data from one location to another. This method may not be the needed approach.
+    In those cases using a service would be the better approach.
+  </p>
+
+  <h3>
+    72. Understanding View Encapsulation
+  </h3>
+
+  <p>
+    Angular by default encapsulates css per component so that styles in one component will not be applied
+    other angular components. Angular accomplishes this by adding additional information to the element
+    for css section. Id does this for each component that is used so that css is only applied to the
+    component elements.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_167.PNG" alt="capture_167">
+    </div>
+    <figcaption>Angular CSS Section Additions</figcaption>
+  </figure>
+
+  <h3>
+    73. More on View Encapsulation
+  </h3>
+
+  <p>
+    The default behavior for encapsulating every element can be changed by setting the <code>encapsulation</code>
+    property with the <code>@Component</code> decorator of the component. The modes are <code>Emulated</code> (which
+    is the default), <code>None</code>, and <code>ShadowDom</code>.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_168.PNG" alt="capture_168">
+    </div>
+    <figcaption>Encapsulation Settings For a Component</figcaption>
+  </figure>
+
+  <h3>
+    74. Using Local References in Templates
+  </h3>
+
+  <p>
+    An alternative to two-way binding (<code>[(ngModel)]</code> syntax) is to use a 
+    <span style="color: red;"><b>Local Reference</b></span>. This reference will
+    hold a reference to the element. This reference can then be used inside the template
+    but not in the typescript code. <span style="color: red;"><b>Important</b></span>: 
+    Only in the template.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_169.PNG" alt="capture_169">
+    </div>
+    <figcaption>Define Local Reference in Template</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_170.PNG" alt="capture_170">
+    </div>
+    <figcaption>Use HTML Element Passed By Reference in TS file</figcaption>
+  </figure>
+
+  <h3>
+    75. <code>@ViewChild()</code> in Angular 8+
+  </h3>
+
+  <p>
+    In <b>Angular 8+</b>, the <code>@ViewChild()</code> syntax which you'll see in the next lecture needs to
+    be changed slightly:<br>
+    Instead of:<br>
+    <code>@ViewChild('serverContentInput') serverContentInput: ElementRef;</code><br>
+    use<br>
+    <code>@ViewChild('serverContentInput', {static: true}) serverContentInput: ElementRef;</code><br>
+  </p>
+
+  <p>
+    The same change (add <code>{ static: true }</code> as a second argument) needs to be applied to 
+    <b>ALL</b> usages of <code>@ViewChild()</code> (and also <code>@ContentChild()</code> which you'll
+    learn about later) if you plan on accessing the selected element inside of <code>ngOnInit()</code>.
+  </p>
+
+  <p>
+    If you DON'T access the selected element in ngOnInit (but anywhere else in your component), 
+    set static: false instead!
+  </p>
+
+  <p>
+    If you're using <b>Angular 9+</b>, you only need to add <code>{ static: true }</code> (if needed) but not 
+    <code>{ static: false }</code>.
+  </p>
+
+  <h3>
+    76. Getting Access to the Template & DOM with <code>@ViewChild</code>
+  </h3>
+
+  <p>
+    You can also access local references within TS code.
+  </p>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_171.PNG" alt="capture_171">
+    </div>
+    <figcaption>Figure. Setting Local Ref in Template</figcaption>
+  </figure>
+
+  <figure>
+    <div class="figure-image-div">
+      <img src="static\images\capture_172.PNG" alt="capture_172">
+    </div>
+    <figcaption>Figure. Accessing Local Reference with <code>@ViewChild</code></figcaption>
+  </figure>
+
+  <h3>
+    77. Projecting Content into Components with ng-content
+  </h3>
+
+  <p>
+    If you want to pass in complex html code into a component from the outside. By default anything
+    between the tags of an app will be lost. But this can be changed by a special directive. This
+    directive is <code>&lt;ng-content&gt;&lt;/ng-content&gt;</code>. Then everything added between app tags of a
+    parent will be inserted bewteen the <code>&lt;ng-content&gt;&lt;/ng-content&gt;</code> tags. This
+    could be good for widgets that need to have html tag passed in.
+  </p>
+
+  <h3>
+    78. Understanding the Component Lifecycle
+  </h3>
+
+  <p>
+    TODO
+  </p>
+
   <h2 id="Section9">
     Section 9. Using Services & Dependency Injection
   </h2>
